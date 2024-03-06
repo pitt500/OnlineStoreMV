@@ -9,6 +9,7 @@ import SwiftUI
 
 @main
 struct OnlineStoreMVApp: App {
+
     var body: some Scene {
         WindowGroup {
             ContentView()
