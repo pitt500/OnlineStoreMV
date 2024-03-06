@@ -42,5 +42,7 @@ struct ProductCell: View {
 }
 
 #Preview {
-    ProductCell(product: Product.sample.first!, numberOfItemsInCart: .constant(2))
+    MutableBindingPreview(initialValue: 0) { state in
+        ProductCell(product: Product.sample.first!, numberOfItemsInCart: state)
+    }
 }
