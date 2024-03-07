@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Product: Equatable {
+struct Product: Equatable, Identifiable {
     let id: Int
     let title: String
     let price: Double // Update to Currency
