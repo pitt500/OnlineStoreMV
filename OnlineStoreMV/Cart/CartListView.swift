@@ -14,6 +14,7 @@ struct CartListView: View {
     @State private var showConfirmationAlert = false
     @State private var showSuccessAlert = false
     @State private var showErrorAlert = false
+    @State private var isLoading = false
     
     var isPayButtonDisable: Bool {
         cartStore.totalAmount() == 0
@@ -76,10 +77,14 @@ struct CartListView: View {
                             Text("Cancel")
                         }
                         Button("Yes") {
-                            //cartStore.sendOrder()
+                            Task {
+                                await cartStore.sendOrder()
+                                showSuccessAlert = cartStore.sendOrderStatus == .success
+                                showErrorAlert = cartStore.sendOrderStatus == .error
+                            }
                         }
                     },
-                    message: { Text("Hola compa!") }
+                    message: { Text("Do you want to proceed with your purchase of \(cartStore.totalPriceString)?") }
                 )
                 .alert(
                     "Thank you!",
@@ -87,6 +92,8 @@ struct CartListView: View {
                     actions: {
                         Button("Done") {
                             showSuccessAlert = false
+                            dismiss()
+                            cartStore.removeAllItems()
                         }
                     },
                     message: { Text("Your order is in process.") }
@@ -101,6 +108,11 @@ struct CartListView: View {
                     },
                     message: { Text("Unable to send order, try again later.") }
                 )
+            }
+            if cartStore.isSendingOrder {
+                Color.black.opacity(0.2)
+                    .ignoresSafeArea()
+                ProgressView()
             }
         }
     }

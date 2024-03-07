@@ -9,7 +9,24 @@ import Foundation
 
 @Observable
 class CartStore {
+    enum SendOrderStatus: Equatable {
+        case notStarted
+        case loading
+        case success
+        case error
+    }
+    
     var cartItems: [CartItem] = []
+    private let apiClient: APIClient
+    var sendOrderStatus = SendOrderStatus.notStarted
+    
+    init(apiClient: APIClient = .live) {
+        self.apiClient = apiClient
+    }
+    
+    var isSendingOrder: Bool {
+        sendOrderStatus == .loading
+    }
     
     func addToCart(product: Product) {
         if let index = cartItems.firstIndex(
@@ -47,6 +64,10 @@ class CartStore {
         cartItems.remove(at: index)
     }
     
+    func removeAllItems() {
+        cartItems.removeAll()
+    }
+    
     func totalAmount() -> Double {
         cartItems.reduce(0.0) {
             $0 + ($1.product.price * Double($1.quantity))
@@ -68,5 +89,17 @@ class CartStore {
         cartItems.first {
             $0.product.id == product.id
         }?.quantity ?? 0
+    }
+    
+    func sendOrder() async {
+        
+        do {
+            sendOrderStatus = .loading
+            _ = try await apiClient.sendOrder(cartItems)
+            sendOrderStatus = .success
+        } catch {
+            sendOrderStatus = .error
+            print("Error sending order: \(error.localizedDescription)")
+        }
     }
 }
