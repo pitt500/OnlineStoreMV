@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ProductCell: View {
     let product: Product
-    @Environment(CartStore.self) var cartStore
+    @Environment(CartStore.self) private var cartStore
     
     var body: some View {
         VStack {

@@ -9,14 +9,9 @@ import SwiftUI
 
 @main
 struct OnlineStoreMVApp: App {
-    @State var cartStore = CartStore()
-    @State var productStore = ProductStore()
-    
     var body: some Scene {
         WindowGroup {
-            ProductList()
-                .environment(productStore)
-                .environment(cartStore)
+            RootView()
         }
     }
 }

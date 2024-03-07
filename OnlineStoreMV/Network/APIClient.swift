@@ -10,6 +10,7 @@ import Foundation
 struct APIClient {
     var fetchProducts: () async throws -> [Product]
     var sendOrder: ([CartItem]) async throws -> String
+    var fetchUserProfile: () async throws -> UserProfile
     
     struct Failure: Error, Equatable {}
 }
@@ -38,6 +39,12 @@ extension APIClient {
             }
             
             return "Status: \(httpResponse.statusCode)"
+        }, 
+        fetchUserProfile: {
+            let (data, _) = try await URLSession.shared
+                .data(from: URL(string: "https://fakestoreapi.com/users/1")!)
+            let profile = try JSONDecoder().decode(UserProfile.self, from: data)
+            return profile
         }
     )
     
@@ -48,6 +55,10 @@ extension APIClient {
         },
         sendOrder: { cartItems in
             "OK"
+        },
+        fetchUserProfile: {
+            try await Task.sleep(nanoseconds: 1000)
+            return UserProfile(id: 100, email: "test@test.com", firstName: "Test", lastName: "Lopez")
         }
     )
 }

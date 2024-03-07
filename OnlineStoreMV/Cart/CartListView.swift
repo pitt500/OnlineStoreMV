@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct CartListView: View {
-    @Environment(CartStore.self) var cartStore
-    @Environment(\.dismiss) var dismiss
+    @Environment(CartStore.self) private var cartStore
+    @Environment(\.dismiss) private var dismiss
     
     @State private var showConfirmationAlert = false
     @State private var showSuccessAlert = false

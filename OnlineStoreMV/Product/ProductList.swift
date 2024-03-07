@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct ProductList: View {
-    @Environment(ProductStore.self) var productStore
-    @Environment(CartStore.self) var cartStore
+    @Environment(ProductStore.self) private var productStore
+    @Environment(CartStore.self) private var cartStore
     @State private var shouldOpenCart = false
     
     var body: some View {
