@@ -10,6 +10,7 @@ import SwiftUI
 struct ProductList: View {
     @Environment(ProductStore.self) var productStore
     @Environment(CartStore.self) var cartStore
+    @State private var shouldOpenCart = false
     
     var body: some View {
         NavigationView {
@@ -37,6 +38,18 @@ struct ProductList: View {
             .navigationTitle("Products")
             .refreshable {
                 await productStore.fetchProducts()
+            }
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        shouldOpenCart = true
+                    } label: {
+                        Text("Go to Cart")
+                    }
+                }
+            }
+            .sheet(isPresented: $shouldOpenCart) {
+                Text("Hola")
             }
         }
         
