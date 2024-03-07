@@ -39,6 +39,14 @@ class CartStore {
         }
     }
     
+    func removeAllFromCart(product: Product) {
+        guard let index = cartItems.firstIndex(
+            where: { $0.product.id == product.id }
+        ) else { return }
+        
+        cartItems.remove(at: index)
+    }
+    
     func totalAmount() -> Double {
         cartItems.reduce(0.0) {
             $0 + ($1.product.price * Double($1.quantity))

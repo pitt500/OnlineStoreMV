@@ -28,33 +28,33 @@ struct CartListView: View {
                             .font(.custom("AmericanTypewriter", size: 25))
                     } else {
                         List(cartStore.cartItems) { item in
-                            CartCell()
+                            CartCell(cartItem: item)
+                        }
+                        .safeAreaInset(edge: .bottom) {
+                            Button {
+                                showConfirmationAlert = true
+                            } label: {
+                                HStack(alignment: .center) {
+                                    Spacer()
+                                    Text("Pay \(cartStore.totalPriceString)")
+                                        .font(.custom("AmericanTypewriter", size: 30))
+                                        .foregroundColor(.white)
+                                    
+                                    Spacer()
+                                }
+                                
+                            }
+                            .frame(maxWidth: .infinity, minHeight: 60)
+                            .background(
+                                isPayButtonDisable
+                                ? .gray
+                                : .blue
+                            )
+                            .cornerRadius(10)
+                            .padding()
+                            .disabled(isPayButtonDisable)
                         }
                     }
-                }
-                .safeAreaInset(edge: .bottom) {
-                    Button {
-                        showConfirmationAlert = true
-                    } label: {
-                        HStack(alignment: .center) {
-                            Spacer()
-                            Text("Pay \(cartStore.totalPriceString)")
-                                .font(.custom("AmericanTypewriter", size: 30))
-                                .foregroundColor(.white)
-                            
-                            Spacer()
-                        }
-                        
-                    }
-                        .frame(maxWidth: .infinity, minHeight: 60)
-                        .background(
-                            isPayButtonDisable
-                            ? .gray
-                            : .blue
-                        )
-                        .cornerRadius(10)
-                        .padding()
-                        .disabled(isPayButtonDisable)
                 }
                 .navigationTitle("Cart")
                 .toolbar {
@@ -108,4 +108,5 @@ struct CartListView: View {
 
 #Preview {
     CartListView()
+        .environment(CartStore())
 }

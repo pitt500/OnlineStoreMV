@@ -8,11 +8,67 @@
 import SwiftUI
 
 struct CartCell: View {
+    let cartItem: CartItem
+    @Environment(CartStore.self) private var cartStore
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            HStack {
+                AsyncImage(
+                    url: cartItem.product.imageURL
+                ) {
+                    $0
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 100, height: 100)
+                } placeholder: {
+                    ProgressView()
+                        .frame(width: 100, height: 100)
+                }
+                VStack(alignment: .leading) {
+                    Text(cartItem.product.title)
+                        .lineLimit(3)
+                        .minimumScaleFactor(0.5)
+                    HStack {
+                        Text("$\(cartItem.product.price.description)")
+                            .font(.custom("AmericanTypewriter", size: 25))
+                            .fontWeight(.bold)
+                    }
+                }
+                
+            }
+            ZStack {
+                Group {
+                    Text("Quantity: ")
+                    +
+                    Text("\(cartItem.quantity)")
+                        .fontWeight(.bold)
+                }
+                .font(.custom("AmericanTypewriter", size: 25))
+                HStack {
+                    Spacer()
+                    Button {
+                        cartStore.removeAllFromCart(
+                            product: cartItem.product
+                        )
+                    } label: {
+                        Image(systemName: "trash.fill")
+                            .foregroundColor(.red)
+                            .padding()
+                    }
+                }
+            }
+        }
+        .font(.custom("AmericanTypewriter", size: 20))
+        .padding([.bottom, .top], 10)
     }
 }
 
 #Preview {
-    CartCell()
+    CartCell(
+        cartItem: CartItem(
+            product: Product.sample.first!,
+            quantity: 2
+        )
+    )
 }
