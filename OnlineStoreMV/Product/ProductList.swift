@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct ProductList: View {
-    @Environment(\.productStore) var productStore
-    @Environment(\.cartStore) var cartStore
+    @Environment(ProductStore.self) var productStore
+    @Environment(CartStore.self) var cartStore
     
     var body: some View {
         NavigationView {
@@ -45,6 +45,6 @@ struct ProductList: View {
 
 #Preview {
     ProductList()
-        .environment(ProductStore())
+        .environment(ProductStore(apiClient: .test))
         .environment(CartStore())
 }
