@@ -39,10 +39,15 @@ class CartStore {
         }
     }
     
-    func totalAmount() -> Int {
-        cartItems.reduce(0) {
-            $0 + $1.quantity
+    func totalAmount() -> Double {
+        cartItems.reduce(0.0) {
+            $0 + ($1.product.price * Double($1.quantity))
         }
+    }
+    
+    var totalPriceString: String {
+        let roundedValue = round(totalAmount() * 100) / 100.0
+        return "$\(roundedValue)"
     }
     
     func numberOfItemsInCart(product: Product) -> Int {

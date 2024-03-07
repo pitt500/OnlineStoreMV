@@ -38,7 +38,7 @@ struct CartListView: View {
                     } label: {
                         HStack(alignment: .center) {
                             Spacer()
-                            Text("Pay \(cartStore.totalAmount())")
+                            Text("Pay \(cartStore.totalPriceString)")
                                 .font(.custom("AmericanTypewriter", size: 30))
                                 .foregroundColor(.white)
                             
