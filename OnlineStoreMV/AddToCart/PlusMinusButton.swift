@@ -8,16 +8,13 @@
 import SwiftUI
 
 struct PlusMinusButton: View {
-    @Binding var numberOfItemsInCart: Int
-    
-    init(_ numberOfItemsInCart: Binding<Int>) {
-        self._numberOfItemsInCart = numberOfItemsInCart
-    }
+    let product: Product
+    @Environment(CartStore.self) private var cartStore
     
     var body: some View {
         HStack {
             Button {
-                numberOfItemsInCart -= 1
+                cartStore.removeFromCart(product: product)
             } label: {
                 Text("-")
                     .padding(10)
@@ -27,11 +24,11 @@ struct PlusMinusButton: View {
             }
             .buttonStyle(.plain)
             
-            Text(numberOfItemsInCart.description)
+            Text(cartStore.quantity(for: product).description)
                 .padding(5)
             
             Button {
-                numberOfItemsInCart += 1
+                cartStore.addToCart(product: product)
             } label: {
                 Text("+")
                     .padding(10)
@@ -46,5 +43,7 @@ struct PlusMinusButton: View {
 
 
 #Preview {
-    PlusMinusButton(.constant(2))
+    PlusMinusButton(product: Product.sample.first!)
+        .environment(CartStore())
+        
 }

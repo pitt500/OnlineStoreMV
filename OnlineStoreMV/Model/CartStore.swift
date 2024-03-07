@@ -9,9 +9,51 @@ import Foundation
 
 @Observable
 class CartStore {
-    var cartItems: [CartItem]
+    var cartItems: [CartItem] = []
     
-    init() {
-        cartItems = []
+    func addToCart(product: Product) {
+        if let index = cartItems.firstIndex(
+            where: { $0.product.id == product.id }
+        ) {
+            cartItems[index].quantity += 1
+        } else {
+            cartItems.append(
+                CartItem(
+                    product: product,
+                    quantity: 1
+                )
+            )
+        }
+    }
+    
+    func removeFromCart(product: Product) {
+        guard let index = cartItems.firstIndex(
+            where: { $0.product.id == product.id }
+        ) else { return }
+            
+            
+        if cartItems[index].quantity > 1 {
+            cartItems[index].quantity -= 1
+        } else {
+            cartItems.remove(at: index)
+        }
+    }
+    
+    func totalAmount() -> Int {
+        cartItems.reduce(0) {
+            $0 + $1.quantity
+        }
+    }
+    
+    func numberOfItemsInCart(product: Product) -> Int {
+        cartItems.filter {
+            $0.product.id == product.id
+        }.count
+    }
+    
+    func quantity(for product: Product) -> Int {
+        cartItems.first {
+            $0.product.id == product.id
+        }?.quantity ?? 0
     }
 }

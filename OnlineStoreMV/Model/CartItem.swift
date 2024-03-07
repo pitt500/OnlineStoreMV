@@ -7,9 +7,9 @@
 
 import Foundation
 
-struct CartItem {
+struct CartItem: Equatable {
     let product: Product
-    let quantity: Int
+    var quantity: Int
 }
 
 extension CartItem: Encodable {

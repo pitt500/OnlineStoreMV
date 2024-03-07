@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ProductCell: View {
     let product: Product
-    @Binding var numberOfItemsInCart: Int
+    @Environment(CartStore.self) var cartStore
     
     var body: some View {
         VStack {
@@ -32,7 +32,7 @@ struct ProductCell: View {
                         .font(.custom("AmericanTypewriter", size: 25))
                         .fontWeight(.bold)
                     Spacer()
-                    AddToCartButton($numberOfItemsInCart)
+                    AddToCartButton(product: product)
                 }
             }
             .font(.custom("AmericanTypewriter", size: 20))
@@ -42,7 +42,6 @@ struct ProductCell: View {
 }
 
 #Preview {
-    MutableBindingPreview(initialValue: 0) { state in
-        ProductCell(product: Product.sample.first!, numberOfItemsInCart: state)
-    }
+    ProductCell(product: Product.sample.first!)
+        .environment(CartStore())
 }

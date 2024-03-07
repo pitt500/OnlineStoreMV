@@ -9,10 +9,12 @@ import SwiftUI
 
 @main
 struct OnlineStoreMVApp: App {
-
+    @State var cartStore = CartStore()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ProductCell(product: Product.sample.first!)
+                .environment(cartStore)
         }
     }
 }

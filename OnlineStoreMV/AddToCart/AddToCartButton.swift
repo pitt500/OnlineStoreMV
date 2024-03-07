@@ -8,18 +8,15 @@
 import SwiftUI
 
 struct AddToCartButton: View {
-    @Binding var numberOfItemsInCart: Int
-    
-    init(_ numberOfItemsInCart: Binding<Int>) {
-        self._numberOfItemsInCart = numberOfItemsInCart
-    }
+    let product: Product
+    @Environment(CartStore.self) private var cartStore
     
     var body: some View {
-        if numberOfItemsInCart > 0 {
-            PlusMinusButton($numberOfItemsInCart)
+        if cartStore.quantity(for: product) > 0 {
+            PlusMinusButton(product: product)
         } else {
             Button {
-                numberOfItemsInCart = 1
+                cartStore.addToCart(product: product)
             } label: {
                 Text("Add to Cart")
                     .padding(10)
@@ -33,5 +30,6 @@ struct AddToCartButton: View {
 }
 
 #Preview {
-    AddToCartButton(.constant(2))
+    AddToCartButton(product: Product.sample.first!)
+        .environment(CartStore())
 }

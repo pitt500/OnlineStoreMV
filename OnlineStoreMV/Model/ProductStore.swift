@@ -9,8 +9,17 @@ import Foundation
 
 @Observable
 class ProductStore {
-    var products: [Product]
+    enum LoadingState {
+        case notStarted
+        case loading
+        case loaded(result: [Product])
+        case empty
+        case error(message: String)
+    }
+    
+    private var products: [Product]
     private let apiClient: APIClient
+    var loadingState = LoadingState.notStarted
     
     init(apiClient: APIClient = .live) {
         self.products = []
@@ -19,9 +28,15 @@ class ProductStore {
     
     func fetchProducts() async {
         do {
+            loadingState = .loading
             products = try await apiClient.fetchProducts()
+            loadingState = if products.isEmpty {
+                .empty
+            } else {
+                .loaded(result: products)
+            }
         } catch {
-            print(error)
+            loadingState = .error(message: error.localizedDescription)
         }
     }
     
