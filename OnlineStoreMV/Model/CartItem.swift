@@ -7,9 +7,11 @@
 
 import Foundation
 
-struct CartItem: Equatable {
+struct CartItem: Equatable, Identifiable {
     let product: Product
     var quantity: Int
+    
+    var id = UUID()
 }
 
 extension CartItem: Encodable {

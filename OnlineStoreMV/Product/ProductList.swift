@@ -49,7 +49,7 @@ struct ProductList: View {
                 }
             }
             .sheet(isPresented: $shouldOpenCart) {
-                Text("Hola")
+                CartListView()
             }
         }
         
