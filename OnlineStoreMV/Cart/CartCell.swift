@@ -71,4 +71,5 @@ struct CartCell: View {
             quantity: 2
         )
     )
+    .environment(CartStore())
 }

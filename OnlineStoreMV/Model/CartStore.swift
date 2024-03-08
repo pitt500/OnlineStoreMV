@@ -20,7 +20,11 @@ class CartStore {
     private let apiClient: APIClient
     var sendOrderStatus = SendOrderStatus.notStarted
     
-    init(apiClient: APIClient = .live) {
+    init(
+        cartItems: [CartItem] = [],
+        apiClient: APIClient = .live
+    ) {
+        self.cartItems = cartItems
         self.apiClient = apiClient
     }
     

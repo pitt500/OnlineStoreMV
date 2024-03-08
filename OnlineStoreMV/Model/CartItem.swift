@@ -27,3 +27,8 @@ extension CartItem: Encodable {
     }
 }
 
+extension CartItem {
+    static let sample = Product.sample.map {
+        CartItem(product: $0, quantity: 2)
+    }
+}

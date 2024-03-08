@@ -120,5 +120,10 @@ struct CartListView: View {
 
 #Preview {
     CartListView()
-        .environment(CartStore())
+        .environment(
+            CartStore(
+                cartItems: CartItem.sample,
+                apiClient: .test
+            )
+        )
 }
