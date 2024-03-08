@@ -22,7 +22,6 @@
 		B559E6A22B9A671B002218EB /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B559E6A12B9A671B002218EB /* ProfileView.swift */; };
 		B559E6A42B9A67B9002218EB /* AccountStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B559E6A32B9A67B9002218EB /* AccountStore.swift */; };
 		B559E6A72B9A7B5F002218EB /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B559E6A62B9A7B5F002218EB /* RootView.swift */; };
-		B559E6B02B9AF88D002218EB /* OnlineStoreMVTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B559E6AF2B9AF88D002218EB /* OnlineStoreMVTests.swift */; };
 		B559E6B92B9AF8C3002218EB /* CartStoreTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B559E6B82B9AF8C3002218EB /* CartStoreTest.swift */; };
 		B58F25E82B96E58E000CAD57 /* OnlineStoreMVApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58F25E72B96E58E000CAD57 /* OnlineStoreMVApp.swift */; };
 		B58F25EC2B96E58F000CAD57 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B58F25EB2B96E58F000CAD57 /* Assets.xcassets */; };
@@ -56,7 +55,6 @@
 		B559E6A32B9A67B9002218EB /* AccountStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountStore.swift; sourceTree = "<group>"; };
 		B559E6A62B9A7B5F002218EB /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		B559E6AD2B9AF88D002218EB /* OnlineStoreMVTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OnlineStoreMVTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		B559E6AF2B9AF88D002218EB /* OnlineStoreMVTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlineStoreMVTests.swift; sourceTree = "<group>"; };
 		B559E6B82B9AF8C3002218EB /* CartStoreTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartStoreTest.swift; sourceTree = "<group>"; };
 		B58F25E42B96E58E000CAD57 /* OnlineStoreMV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnlineStoreMV.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B58F25E72B96E58E000CAD57 /* OnlineStoreMVApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlineStoreMVApp.swift; sourceTree = "<group>"; };
@@ -156,19 +154,10 @@
 			path = Test;
 			sourceTree = "<group>";
 		};
-		B559E6AE2B9AF88D002218EB /* OnlineStoreMVTests */ = {
-			isa = PBXGroup;
-			children = (
-				B559E6AF2B9AF88D002218EB /* OnlineStoreMVTests.swift */,
-			);
-			path = OnlineStoreMVTests;
-			sourceTree = "<group>";
-		};
 		B58F25DB2B96E58E000CAD57 = {
 			isa = PBXGroup;
 			children = (
 				B58F25E62B96E58E000CAD57 /* OnlineStoreMV */,
-				B559E6AE2B9AF88D002218EB /* OnlineStoreMVTests */,
 				B58F25E52B96E58E000CAD57 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -308,7 +297,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B559E6B02B9AF88D002218EB /* OnlineStoreMVTests.swift in Sources */,
 				B559E6B92B9AF8C3002218EB /* CartStoreTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
