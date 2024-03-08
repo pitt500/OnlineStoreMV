@@ -83,12 +83,6 @@ class CartStore {
         return "$\(roundedValue)"
     }
     
-    func numberOfItemsInCart(product: Product) -> Int {
-        cartItems.filter {
-            $0.product.id == product.id
-        }.count
-    }
-    
     func quantity(for product: Product) -> Int {
         cartItems.first {
             $0.product.id == product.id
@@ -96,7 +90,6 @@ class CartStore {
     }
     
     func sendOrder() async {
-        
         do {
             sendOrderStatus = .loading
             _ = try await apiClient.sendOrder(cartItems)
