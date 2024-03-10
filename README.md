@@ -1,4 +1,4 @@
-# OnlineStore made SwiftUI (Vanilla) and Observation
+# OnlineStore made with SwiftUI (Vanilla) and Observation
 
 ## Motivation
 
