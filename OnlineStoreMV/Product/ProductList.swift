@@ -33,12 +33,12 @@ struct ProductList: View {
                         )
                         .environment(cartStore)
                     }
+                    .refreshable {
+                        await productStore.fetchProducts()
+                    }
                 }
             }
             .navigationTitle("Products")
-            .refreshable {
-                await productStore.fetchProducts()
-            }
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {

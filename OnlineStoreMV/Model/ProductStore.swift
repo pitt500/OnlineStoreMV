@@ -26,6 +26,7 @@ class ProductStore {
         self.apiClient = apiClient
     }
     
+    @MainActor
     func fetchProducts() async {
         do {
             loadingState = .loading
