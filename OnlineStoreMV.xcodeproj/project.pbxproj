@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B51F118D2BE29AD20005C4DC /* ProductErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51F118C2BE29AD20005C4DC /* ProductErrorView.swift */; };
 		B559E6762B96EDD3002218EB /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = B559E6752B96EDD3002218EB /* Product.swift */; };
 		B559E6782B96EDFC002218EB /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B559E6772B96EDFC002218EB /* ProductCell.swift */; };
 		B559E67A2B977A45002218EB /* AddToCartButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B559E6792B977A45002218EB /* AddToCartButton.swift */; };
@@ -39,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B51F118C2BE29AD20005C4DC /* ProductErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductErrorView.swift; sourceTree = "<group>"; };
 		B559E6752B96EDD3002218EB /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		B559E6772B96EDFC002218EB /* ProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCell.swift; sourceTree = "<group>"; };
 		B559E6792B977A45002218EB /* AddToCartButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToCartButton.swift; sourceTree = "<group>"; };
@@ -86,6 +88,7 @@
 			children = (
 				B559E6772B96EDFC002218EB /* ProductCell.swift */,
 				B559E6952B984D84002218EB /* ProductList.swift */,
+				B51F118C2BE29AD20005C4DC /* ProductErrorView.swift */,
 			);
 			path = Product;
 			sourceTree = "<group>";
@@ -315,6 +318,7 @@
 				B559E6962B984D84002218EB /* ProductList.swift in Sources */,
 				B559E6A22B9A671B002218EB /* ProfileView.swift in Sources */,
 				B559E69B2B9994AD002218EB /* CartListView.swift in Sources */,
+				B51F118D2BE29AD20005C4DC /* ProductErrorView.swift in Sources */,
 				B559E6862B978624002218EB /* CartItem.swift in Sources */,
 				B559E6842B97856E002218EB /* CartStore.swift in Sources */,
 				B58F25E82B96E58E000CAD57 /* OnlineStoreMVApp.swift in Sources */,
@@ -513,10 +517,10 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 13.6;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.swiftandtips.OnlineStoreMV;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -551,10 +555,10 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 13.6;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.swiftandtips.OnlineStoreMV;
 				PRODUCT_NAME = "$(TARGET_NAME)";

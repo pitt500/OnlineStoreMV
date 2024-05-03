@@ -56,5 +56,5 @@ struct ProfileView: View {
 
 #Preview {
     ProfileView()
-        .environment(AccountStore(apiClient: .test))
+        .environment(AccountStore(apiClient: .testSuccess))
 }

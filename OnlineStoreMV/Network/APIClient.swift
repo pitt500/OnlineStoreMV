@@ -48,10 +48,38 @@ extension APIClient {
         }
     )
     
-    static let test = Self(
+    static let testSuccess = Self(
         fetchProducts: {
             try await Task.sleep(nanoseconds: 1000)
             return Product.sample
+        },
+        sendOrder: { cartItems in
+            "OK"
+        },
+        fetchUserProfile: {
+            try await Task.sleep(nanoseconds: 1000)
+            return UserProfile(id: 100, email: "test@test.com", firstName: "Test", lastName: "Lopez")
+        }
+    )
+    
+    static let testEmpty = Self(
+        fetchProducts: {
+            try await Task.sleep(nanoseconds: 1000)
+            return []
+        },
+        sendOrder: { cartItems in
+            "OK"
+        },
+        fetchUserProfile: {
+            try await Task.sleep(nanoseconds: 1000)
+            return UserProfile(id: 100, email: "test@test.com", firstName: "Test", lastName: "Lopez")
+        }
+    )
+    
+    static let testError = Self(
+        fetchProducts: {
+            try await Task.sleep(nanoseconds: 1000)
+            throw Failure()
         },
         sendOrder: { cartItems in
             "OK"

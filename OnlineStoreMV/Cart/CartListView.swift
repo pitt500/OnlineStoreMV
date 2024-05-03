@@ -123,7 +123,7 @@ struct CartListView: View {
         .environment(
             CartStore(
                 cartItems: CartItem.sample,
-                apiClient: .test
+                apiClient: .testSuccess
             )
         )
 }

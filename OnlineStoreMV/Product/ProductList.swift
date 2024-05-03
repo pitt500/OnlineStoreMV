@@ -23,9 +23,9 @@ struct ProductList: View {
                             await productStore.fetchProducts()
                         }
                 case .error(let message):
-                    Text(message)
+                    ProductErrorView(message: message)
                 case .empty:
-                    Text("No Data Found")
+                    Text("No Products Found")
                 case .loaded(let products):
                     List(products) { product in
                         ProductCell(
@@ -56,8 +56,21 @@ struct ProductList: View {
     }
 }
 
-#Preview {
+#Preview("Happy Path") {
     ProductList()
-        .environment(ProductStore(apiClient: .test))
+        .environment(ProductStore(apiClient: .testSuccess))
+        .environment(CartStore())
+}
+
+
+#Preview("Empty List") {
+    ProductList()
+        .environment(ProductStore(apiClient: .testEmpty))
+        .environment(CartStore())
+}
+
+#Preview("Error from API") {
+    ProductList()
+        .environment(ProductStore(apiClient: .testError))
         .environment(CartStore())
 }

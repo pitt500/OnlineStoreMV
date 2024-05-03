@@ -50,7 +50,7 @@ final class CartStoreTest: XCTestCase {
         ]
         let cartStore = CartStore(
             cartItems: cartItems,
-            apiClient: .test
+            apiClient: .testSuccess
         )
         
         let expected = "$628.92"
@@ -100,7 +100,7 @@ final class CartStoreTest: XCTestCase {
         ]
         let cartStore = CartStore(
             cartItems: cartItems,
-            apiClient: .test
+            apiClient: .testSuccess
         )
         
         let expectedQuantity = 4
@@ -155,7 +155,7 @@ final class CartStoreTest: XCTestCase {
         ]
         let cartStore = CartStore(
             cartItems: cartItems,
-            apiClient: .test
+            apiClient: .testSuccess
         )
         
         let expectedQuantity = 2
@@ -189,7 +189,7 @@ final class CartStoreTest: XCTestCase {
         ]
         let cartStore = CartStore(
             cartItems: cartItems,
-            apiClient: .test
+            apiClient: .testSuccess
         )
         
         let expected: [CartItem] = []
@@ -242,7 +242,7 @@ final class CartStoreTest: XCTestCase {
         ]
         let cartStore = CartStore(
             cartItems: cartItems,
-            apiClient: .test
+            apiClient: .testSuccess
         )
         
         let expected: [CartItem] = []
@@ -271,7 +271,7 @@ final class CartStoreTest: XCTestCase {
         ]
         let cartStore = CartStore(
             cartItems: cartItems,
-            apiClient: .test
+            apiClient: .testSuccess
         )
         
         let expected = 4
@@ -305,7 +305,7 @@ final class CartStoreTest: XCTestCase {
         ]
         let cartStore = CartStore(
             cartItems: cartItems,
-            apiClient: .test
+            apiClient: .testSuccess
         )
         
         let expected = 0
@@ -355,7 +355,7 @@ final class CartStoreTest: XCTestCase {
         ]
         let cartStore = CartStore(
             cartItems: cartItems,
-            apiClient: .test
+            apiClient: .testSuccess
         )
         
         let expectedQuantity = 9
@@ -395,7 +395,7 @@ final class CartStoreTest: XCTestCase {
         ]
         let cartStore = CartStore(
             cartItems: cartItems,
-            apiClient: .test
+            apiClient: .testSuccess
         )
         
         let expectedCartItemsCount = 2
