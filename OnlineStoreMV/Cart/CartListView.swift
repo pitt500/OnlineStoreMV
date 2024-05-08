@@ -118,6 +118,7 @@ struct CartListView: View {
     }
 }
 
+#if DEBUG
 #Preview {
     CartListView()
         .environment(
@@ -127,3 +128,4 @@ struct CartListView: View {
             )
         )
 }
+#endif

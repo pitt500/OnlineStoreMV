@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B50DFF3C2BE6A25800039CCE /* Product+Sample.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50DFF3B2BE6A25800039CCE /* Product+Sample.swift */; };
+		B50DFF3E2BE6A3CB00039CCE /* CartItem+Sample.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50DFF3D2BE6A3CB00039CCE /* CartItem+Sample.swift */; };
 		B51F118D2BE29AD20005C4DC /* ProductErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51F118C2BE29AD20005C4DC /* ProductErrorView.swift */; };
 		B559E6762B96EDD3002218EB /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = B559E6752B96EDD3002218EB /* Product.swift */; };
 		B559E6782B96EDFC002218EB /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B559E6772B96EDFC002218EB /* ProductCell.swift */; };
@@ -40,6 +42,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B50DFF3B2BE6A25800039CCE /* Product+Sample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Product+Sample.swift"; sourceTree = "<group>"; };
+		B50DFF3D2BE6A3CB00039CCE /* CartItem+Sample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CartItem+Sample.swift"; sourceTree = "<group>"; };
 		B51F118C2BE29AD20005C4DC /* ProductErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductErrorView.swift; sourceTree = "<group>"; };
 		B559E6752B96EDD3002218EB /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		B559E6772B96EDFC002218EB /* ProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCell.swift; sourceTree = "<group>"; };
@@ -196,6 +200,8 @@
 			isa = PBXGroup;
 			children = (
 				B58F25EF2B96E58F000CAD57 /* Preview Assets.xcassets */,
+				B50DFF3B2BE6A25800039CCE /* Product+Sample.swift */,
+				B50DFF3D2BE6A3CB00039CCE /* CartItem+Sample.swift */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
@@ -317,6 +323,8 @@
 				B559E68B2B982E6E002218EB /* APIClient.swift in Sources */,
 				B559E6962B984D84002218EB /* ProductList.swift in Sources */,
 				B559E6A22B9A671B002218EB /* ProfileView.swift in Sources */,
+				B50DFF3E2BE6A3CB00039CCE /* CartItem+Sample.swift in Sources */,
+				B50DFF3C2BE6A25800039CCE /* Product+Sample.swift in Sources */,
 				B559E69B2B9994AD002218EB /* CartListView.swift in Sources */,
 				B51F118D2BE29AD20005C4DC /* ProductErrorView.swift in Sources */,
 				B559E6862B978624002218EB /* CartItem.swift in Sources */,

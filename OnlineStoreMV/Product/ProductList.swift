@@ -56,6 +56,7 @@ struct ProductList: View {
     }
 }
 
+#if DEBUG
 #Preview("Happy Path") {
     ProductList()
         .environment(ProductStore(apiClient: .testSuccess))
@@ -74,3 +75,4 @@ struct ProductList: View {
         .environment(ProductStore(apiClient: .testError))
         .environment(CartStore())
 }
+#endif

@@ -47,7 +47,7 @@ extension APIClient {
             return profile
         }
     )
-    
+#if DEBUG
     static let testSuccess = Self(
         fetchProducts: {
             try await Task.sleep(nanoseconds: 1000)
@@ -89,5 +89,6 @@ extension APIClient {
             return UserProfile(id: 100, email: "test@test.com", firstName: "Test", lastName: "Lopez")
         }
     )
+#endif
 }
 

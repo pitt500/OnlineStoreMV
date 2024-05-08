@@ -41,7 +41,9 @@ struct ProductCell: View {
     }
 }
 
-#Preview(traits: .sizeThatFitsLayout) {
+#if DEBUG
+#Preview {
     ProductCell(product: Product.sample.first!)
         .environment(CartStore())
 }
+#endif

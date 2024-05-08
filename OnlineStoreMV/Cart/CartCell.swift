@@ -64,6 +64,7 @@ struct CartCell: View {
     }
 }
 
+#if DEBUG
 #Preview {
     CartCell(
         cartItem: CartItem(
@@ -73,3 +74,4 @@ struct CartCell: View {
     )
     .environment(CartStore())
 }
+#endif

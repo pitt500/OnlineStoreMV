@@ -26,9 +26,3 @@ extension CartItem: Encodable {
         try container.encode(quantity, forKey: .quantity)
     }
 }
-
-extension CartItem {
-    static let sample = Product.sample.map {
-        CartItem(product: $0, quantity: 2)
-    }
-}

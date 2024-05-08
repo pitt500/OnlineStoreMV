@@ -54,7 +54,9 @@ struct ProfileView: View {
     }
 }
 
+#if DEBUG
 #Preview {
     ProfileView()
         .environment(AccountStore(apiClient: .testSuccess))
 }
+#endif
