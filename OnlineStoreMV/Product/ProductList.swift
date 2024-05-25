@@ -23,9 +23,32 @@ struct ProductList: View {
                             await productStore.fetchProducts()
                         }
                 case .error(let message):
-                    ProductErrorView(message: message)
+                    ContentUnavailableView(
+                        "There was a problem reaching the server. Please try again later.",
+                        image: "errorCloud",
+                        description: Text(message)
+                    )
                 case .empty:
-                    Text("No Products Found")
+                    ContentUnavailableView {
+                        Label{
+                            Text("No Products Found")
+                        } icon: { 
+                            Image("question")
+                                .resizable()
+                                .frame(width: 100, height: 100)
+                        }
+                    } description : {
+                        Text("More products will come soon")
+                    } actions: {
+                        Button {
+                            Task {
+                                await productStore.fetchProducts()
+                            }
+                        } label: {
+                            Text("Retry")
+                                .font(.title)
+                        }
+                    }
                 case .loaded(let products):
                     List(products) { product in
                         ProductCell(
