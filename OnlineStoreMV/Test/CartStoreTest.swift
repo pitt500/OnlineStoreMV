@@ -6,12 +6,13 @@
 //
 
 import XCTest
+import Testing
 
 @testable import OnlineStoreMV
 
-final class CartStoreTest: XCTestCase {
-
-    func testTotalAmountString() throws {
+struct CartStoreTest {
+    @Test("Get total amount to pay as string")
+    func totalAmountString() throws {
         
         let cartItems = [
             CartItem(
@@ -53,11 +54,11 @@ final class CartStoreTest: XCTestCase {
             apiClient: .testSuccess
         )
         
-        let expected = "$628.92"
-        let actual = cartStore.totalPriceString
-        
-        XCTAssertEqual(actual, expected, "Actual result is not the same as expected")
+        #expect(cartStore.totalPriceString == "$628.92")
     }
+}
+
+final class CartStoreTest_deprecated: XCTestCase {
     
     func testSubstractQuantityFromItemInCart() {
         let product1 = Product(

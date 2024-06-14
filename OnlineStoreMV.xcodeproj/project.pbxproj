@@ -10,6 +10,7 @@
 		B50DFF3C2BE6A25800039CCE /* Product+Sample.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50DFF3B2BE6A25800039CCE /* Product+Sample.swift */; };
 		B50DFF3E2BE6A3CB00039CCE /* CartItem+Sample.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50DFF3D2BE6A3CB00039CCE /* CartItem+Sample.swift */; };
 		B51F118D2BE29AD20005C4DC /* ProductErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51F118C2BE29AD20005C4DC /* ProductErrorView.swift */; };
+		B53800D52C1C88DE001C5AB8 /* Testing in Frameworks */ = {isa = PBXBuildFile; productRef = B53800D42C1C88DE001C5AB8 /* Testing */; };
 		B559E6762B96EDD3002218EB /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = B559E6752B96EDD3002218EB /* Product.swift */; };
 		B559E6782B96EDFC002218EB /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B559E6772B96EDFC002218EB /* ProductCell.swift */; };
 		B559E67A2B977A45002218EB /* AddToCartButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B559E6792B977A45002218EB /* AddToCartButton.swift */; };
@@ -74,6 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B53800D52C1C88DE001C5AB8 /* Testing in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -223,6 +225,9 @@
 				B559E6B22B9AF88D002218EB /* PBXTargetDependency */,
 			);
 			name = OnlineStoreMVTests;
+			packageProductDependencies = (
+				B53800D42C1C88DE001C5AB8 /* Testing */,
+			);
 			productName = OnlineStoreMVTests;
 			productReference = B559E6AD2B9AF88D002218EB /* OnlineStoreMVTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -272,6 +277,9 @@
 				Base,
 			);
 			mainGroup = B58F25DB2B96E58E000CAD57;
+			packageReferences = (
+				B53800D32C1C88DE001C5AB8 /* XCRemoteSwiftPackageReference "swift-testing" */,
+			);
 			productRefGroup = B58F25E52B96E58E000CAD57 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -609,6 +617,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B53800D32C1C88DE001C5AB8 /* XCRemoteSwiftPackageReference "swift-testing" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-testing";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.10.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B53800D42C1C88DE001C5AB8 /* Testing */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B53800D32C1C88DE001C5AB8 /* XCRemoteSwiftPackageReference "swift-testing" */;
+			productName = Testing;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = B58F25DC2B96E58E000CAD57 /* Project object */;
 }
