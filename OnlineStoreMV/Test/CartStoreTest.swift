@@ -11,6 +11,7 @@ import Testing
 @testable import OnlineStoreMV
 
 extension Tag {
+    @Tag static var adding: Self
     @Tag static var substracting: Self
     @Tag static var removing: Self
     @Tag static var quantity: Self
@@ -70,7 +71,7 @@ struct CartStoreTest {
         #expect(cartStore.totalPriceString == "$628.92")
     }
     
-    @Suite("Substracting Tests",.tags(.substracting))
+    @Suite("Substracting Quantity on Cart Items",.tags(.substracting))
     struct SubstractingTest {
 
         @Test
@@ -137,7 +138,7 @@ struct CartStoreTest {
         }
     }
     
-    @Suite("Removing Tests", .tags(.removing))
+    @Suite("Removing Items from Cart", .tags(.removing))
     struct RemovingTest {
         
         @Test
@@ -239,101 +240,57 @@ struct CartStoreTest {
             #expect(quantity == 0)
         }
     }
-}
-
-final class CartStoreTest_deprecated: XCTestCase {
     
-    func testAddQuantityFromExistingItemInCart() {
-        let product1 = Product(
-            id: 1,
-            title: "test1",
-            price: 123.12,
-            description: "",
-            category: "",
-            imageURL: URL(string: "www.apple.com")!
-        )
-        let product2 = Product(
-            id: 2,
-            title: "test2",
-            price: 77.56,
-            description: "",
-            category: "",
-            imageURL: URL(string: "www.apple.com")!
-        )
-        let product3 = Product(
-            id: 3,
-            title: "test2",
-            price: 91.0,
-            description: "",
-            category: "",
-            imageURL: URL(string: "www.apple.com")!
-        )
-        let cartItems = [
-            CartItem(
-                product: product1,
-                quantity: 3
-            ),
-            CartItem(
-                product: product2,
-                quantity: 1
-            ),
-            CartItem(
-                product: product3,
-                quantity: 2
-            ),
-        ]
-        let cartStore = CartStore(
-            cartItems: cartItems,
-            apiClient: .testSuccess
-        )
-        
-        let expectedQuantity = 9
-        
-        cartStore.addToCart(product: product1)
-        cartStore.addToCart(product: product3)
-        cartStore.addToCart(product: product3)
-        let actualQuantity = cartStore.cartItems.reduce(0) {
-            $0 + $1.quantity
+    @Suite("Adding Items To Cart", .tags(.adding))
+    struct AddingToCartTest {
+        @Test
+        func addQuantityFromExistingItem() {
+            let cartItems = [
+                CartItem(
+                    product: products[0],
+                    quantity: 3
+                ),
+                CartItem(
+                    product: products[1],
+                    quantity: 1
+                ),
+                CartItem(
+                    product: products[2],
+                    quantity: 2
+                ),
+            ]
+            let cartStore = CartStore(
+                cartItems: cartItems,
+                apiClient: .testSuccess
+            )
+            
+            cartStore.addToCart(product: products[0])
+            cartStore.addToCart(product: products[2])
+            cartStore.addToCart(product: products[3])
+            let quantity = cartStore.cartItems.reduce(0) {
+                $0 + $1.quantity
+            }
+            
+            #expect(quantity == 9)
         }
         
-        XCTAssertEqual(expectedQuantity, actualQuantity)
-    }
-    
-    func testAddQuantityFromNewItemInCart() {
-        let product1 = Product(
-            id: 1,
-            title: "test1",
-            price: 123.12,
-            description: "",
-            category: "",
-            imageURL: URL(string: "www.apple.com")!
-        )
-        let product2 = Product(
-            id: 2,
-            title: "test2",
-            price: 77.56,
-            description: "",
-            category: "",
-            imageURL: URL(string: "www.apple.com")!
-        )
-        let cartItems = [
-            CartItem(
-                product: product1,
-                quantity: 3
+        @Test
+        func addQuantityFromNewItem() {
+            let cartItems = [
+                CartItem(
+                    product: products[0],
+                    quantity: 3
+                )
+            ]
+            let cartStore = CartStore(
+                cartItems: cartItems,
+                apiClient: .testSuccess
             )
-        ]
-        let cartStore = CartStore(
-            cartItems: cartItems,
-            apiClient: .testSuccess
-        )
-        
-        let expectedCartItemsCount = 2
-        
-        cartStore.addToCart(product: product1)
-        cartStore.addToCart(product: product2)
-        
-        let actualCartItemsCount = cartStore.cartItems.count
-        
-        XCTAssertEqual(expectedCartItemsCount, actualCartItemsCount)
+                        
+            cartStore.addToCart(product: products[0])
+            cartStore.addToCart(product: products[1])
+            
+            #expect(cartStore.cartItems.count == 2)
+        }
     }
 }
