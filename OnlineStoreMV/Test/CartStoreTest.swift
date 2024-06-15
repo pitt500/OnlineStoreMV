@@ -15,9 +15,10 @@ extension Tag {
     @Tag static var substracting: Self
     @Tag static var removing: Self
     @Tag static var quantity: Self
+    @Tag static var product: Self
 }
 
-var products: [Product] = [
+var products = [
     Product(
         id: 1,
         title: "test1",
@@ -43,26 +44,25 @@ var products: [Product] = [
         imageURL: URL(string: "www.apple.com")!
     )
 ]
+let cartItems = [
+    CartItem(
+        product: products[0],
+        quantity: 3
+    ),
+    CartItem(
+        product: products[1],
+        quantity: 1
+    ),
+    CartItem(
+        product: products[2],
+        quantity: 2
+    ),
+]
 
 struct CartStoreTest {
     
     @Test("Get total amount to pay as string")
     func totalAmountString() throws {
-        
-        let cartItems = [
-            CartItem(
-                product: products[0],
-                quantity: 3
-            ),
-            CartItem(
-                product: products[1],
-                quantity: 1
-            ),
-            CartItem(
-                product: products[2],
-                quantity: 2
-            ),
-        ]
         let cartStore = CartStore(
             cartItems: cartItems,
             apiClient: .testSuccess
@@ -76,20 +76,6 @@ struct CartStoreTest {
 
         @Test
         func quantityFromItemInCart() {
-            let cartItems = [
-                CartItem(
-                    product: products[0],
-                    quantity: 3
-                ),
-                CartItem(
-                    product: products[1],
-                    quantity: 1
-                ),
-                CartItem(
-                    product: products[2],
-                    quantity: 2
-                ),
-            ]
             let cartStore = CartStore(
                 cartItems: cartItems,
                 apiClient: .testSuccess
@@ -106,20 +92,6 @@ struct CartStoreTest {
         
         @Test
         func quantityFromItemInCartUntilMakeItZero() {
-            let cartItems = [
-                CartItem(
-                    product: products[0],
-                    quantity: 3
-                ),
-                CartItem(
-                    product: products[1],
-                    quantity: 1
-                ),
-                CartItem(
-                    product: products[2],
-                    quantity: 2
-                ),
-            ]
             let cartStore = CartStore(
                 cartItems: cartItems,
                 apiClient: .testSuccess
@@ -141,48 +113,28 @@ struct CartStoreTest {
     @Suite("Removing Items from Cart", .tags(.removing))
     struct RemovingTest {
         
-        @Test
-        func oneProductFromCart() {
-            let product1 = Product(
-                id: 1,
-                title: "test1",
-                price: 123.12,
-                description: "",
-                category: "",
-                imageURL: URL(string: "www.apple.com")!
-            )
-            let cartItems = [
-                CartItem(
-                    product: product1,
-                    quantity: 4
-                )
-            ]
+        @Test(.tags(.product), arguments: [
+            (products[0],3),
+            (products[1],5),
+            (products[2],4),
+        ])
+        func oneProductFromCart(product: Product, expectedQuantity: Int) {
             let cartStore = CartStore(
                 cartItems: cartItems,
                 apiClient: .testSuccess
             )
             
-            cartStore.removeAllFromCart(product: product1)
+            cartStore.removeAllFromCart(product: product)
+            let quantity = cartStore.cartItems.reduce(0) {
+                $0 + $1.quantity
+            }
             
-            #expect(cartStore.cartItems.isEmpty)
+            #expect(cartStore.cartItems.count == 2)
+            #expect(quantity == expectedQuantity)
         }
         
-        @Test
+        @Test(.tags(.product))
         func allItemsFromCart() {
-            let cartItems = [
-                CartItem(
-                    product: products[0],
-                    quantity: 3
-                ),
-                CartItem(
-                    product: products[1],
-                    quantity: 1
-                ),
-                CartItem(
-                    product: products[2],
-                    quantity: 2
-                ),
-            ]
             let cartStore = CartStore(
                 cartItems: cartItems,
                 apiClient: .testSuccess
@@ -199,7 +151,8 @@ struct CartStoreTest {
         .tags(.quantity)
     )
     struct QuantityTest {
-        @Test func productInCart() {
+        @Test(.tags(.product))
+        func productInCart() {
             let cartItems = [
                 CartItem(
                     product: products[0],
@@ -215,7 +168,8 @@ struct CartStoreTest {
             #expect(quantity == 4)
         }
         
-        @Test func nonExistingProductInCart() {
+        @Test(.tags(.product))
+        func nonExistingProductInCart() {
             let unknownProduct = Product(
                 id: 1000,
                 title: "test1",
@@ -245,28 +199,14 @@ struct CartStoreTest {
     struct AddingToCartTest {
         @Test
         func addQuantityFromExistingItem() {
-            let cartItems = [
-                CartItem(
-                    product: products[0],
-                    quantity: 3
-                ),
-                CartItem(
-                    product: products[1],
-                    quantity: 1
-                ),
-                CartItem(
-                    product: products[2],
-                    quantity: 2
-                ),
-            ]
             let cartStore = CartStore(
                 cartItems: cartItems,
                 apiClient: .testSuccess
             )
             
             cartStore.addToCart(product: products[0])
+            cartStore.addToCart(product: products[1])
             cartStore.addToCart(product: products[2])
-            cartStore.addToCart(product: products[3])
             let quantity = cartStore.cartItems.reduce(0) {
                 $0 + $1.quantity
             }
