@@ -16,6 +16,7 @@ extension Tag {
     @Tag static var removing: Self
     @Tag static var quantity: Self
     @Tag static var product: Self
+    @Tag static var price: Self
 }
 
 var products = [
@@ -61,7 +62,7 @@ let cartItems = [
 
 struct CartStoreTest {
     
-    @Test("Get total amount to pay as string")
+    @Test("Get total amount to pay as string", .tags(.price))
     func totalAmountString() throws {
         let cartStore = CartStore(
             cartItems: cartItems,
@@ -71,7 +72,7 @@ struct CartStoreTest {
         #expect(cartStore.totalPriceString == "$628.92")
     }
     
-    @Suite("Substracting Quantity on Cart Items",.tags(.substracting))
+    @Suite("Substracting Quantity on Cart Items",.tags(.substracting, .quantity))
     struct SubstractingTest {
 
         @Test
@@ -113,7 +114,7 @@ struct CartStoreTest {
     @Suite("Removing Items from Cart", .tags(.removing))
     struct RemovingTest {
         
-        @Test(.tags(.product), arguments: [
+        @Test(.tags(.product, .quantity), arguments: [
             (products[0],3),
             (products[1],5),
             (products[2],4),
@@ -151,7 +152,7 @@ struct CartStoreTest {
         .tags(.quantity)
     )
     struct QuantityTest {
-        @Test(.tags(.product))
+        @Test(.tags(.product, .quantity))
         func productInCart() {
             let cartItems = [
                 CartItem(
@@ -168,7 +169,7 @@ struct CartStoreTest {
             #expect(quantity == 4)
         }
         
-        @Test(.tags(.product))
+        @Test(.tags(.product, .quantity))
         func nonExistingProductInCart() {
             let unknownProduct = Product(
                 id: 1000,
@@ -197,7 +198,7 @@ struct CartStoreTest {
     
     @Suite("Adding Items To Cart", .tags(.adding))
     struct AddingToCartTest {
-        @Test
+        @Test(.tags(.quantity))
         func addQuantityFromExistingItem() {
             let cartStore = CartStore(
                 cartItems: cartItems,
