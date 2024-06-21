@@ -11,12 +11,12 @@ import Testing
 @testable import OnlineStoreMV
 
 extension Tag {
-    @Tag static var adding: Self
-    @Tag static var substracting: Self
-    @Tag static var removing: Self
-    @Tag static var quantity: Self
-    @Tag static var product: Self
-    @Tag static var price: Self
+    @Tag static let adding: Self
+    @Tag static let substracting: Self
+    @Tag static let removing: Self
+    @Tag static let quantity: Self
+    @Tag static let product: Self
+    @Tag static let price: Self
 }
 
 var products = [
