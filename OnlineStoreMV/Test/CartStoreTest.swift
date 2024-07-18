@@ -19,7 +19,7 @@ extension Tag {
     @Tag static let price: Self
 }
 
-var products = [
+let products = [
     Product(
         id: 1,
         title: "test1",
