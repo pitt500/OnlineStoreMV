@@ -41,4 +41,9 @@ class ProductStore {
         }
     }
     
+    // This code is for demo purpuses
+    func fetchProducts(completion: @escaping (Result<[Product], Error>) -> Void) {
+        apiClient.fetchProducts(completion: completion)
+    }
+    
 }

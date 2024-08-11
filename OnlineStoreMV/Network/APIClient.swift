@@ -92,3 +92,16 @@ extension APIClient {
 #endif
 }
 
+// This code is only for demo purposes
+extension APIClient {
+    func fetchProducts(completion: @escaping (Result<[Product], Error>) -> Void) {
+        Task {
+            do {
+                let products = try await fetchProducts()
+                completion(.success(products))
+            } catch {
+                completion(.failure(error))
+            }
+        }
+    }
+}

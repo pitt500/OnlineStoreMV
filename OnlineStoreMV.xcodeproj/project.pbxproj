@@ -27,6 +27,7 @@
 		B559E6A42B9A67B9002218EB /* AccountStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B559E6A32B9A67B9002218EB /* AccountStore.swift */; };
 		B559E6A72B9A7B5F002218EB /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B559E6A62B9A7B5F002218EB /* RootView.swift */; };
 		B559E6B92B9AF8C3002218EB /* CartStoreTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B559E6B82B9AF8C3002218EB /* CartStoreTest.swift */; };
+		B57B56B62C66E1FF00D90D0F /* ProductStoreTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57B56B52C66E1FF00D90D0F /* ProductStoreTest.swift */; };
 		B58F25E82B96E58E000CAD57 /* OnlineStoreMVApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58F25E72B96E58E000CAD57 /* OnlineStoreMVApp.swift */; };
 		B58F25EC2B96E58F000CAD57 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B58F25EB2B96E58F000CAD57 /* Assets.xcassets */; };
 		B58F25F02B96E58F000CAD57 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B58F25EF2B96E58F000CAD57 /* Preview Assets.xcassets */; };
@@ -63,6 +64,7 @@
 		B559E6A62B9A7B5F002218EB /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		B559E6AD2B9AF88D002218EB /* OnlineStoreMVTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OnlineStoreMVTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B559E6B82B9AF8C3002218EB /* CartStoreTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartStoreTest.swift; sourceTree = "<group>"; };
+		B57B56B52C66E1FF00D90D0F /* ProductStoreTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductStoreTest.swift; sourceTree = "<group>"; };
 		B58F25E42B96E58E000CAD57 /* OnlineStoreMV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnlineStoreMV.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B58F25E72B96E58E000CAD57 /* OnlineStoreMVApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlineStoreMVApp.swift; sourceTree = "<group>"; };
 		B58F25EB2B96E58F000CAD57 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				B559E6B82B9AF8C3002218EB /* CartStoreTest.swift */,
+				B57B56B52C66E1FF00D90D0F /* ProductStoreTest.swift */,
 			);
 			path = Test;
 			sourceTree = "<group>";
@@ -315,6 +318,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B559E6B92B9AF8C3002218EB /* CartStoreTest.swift in Sources */,
+				B57B56B62C66E1FF00D90D0F /* ProductStoreTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
