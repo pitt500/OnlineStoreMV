@@ -10,10 +10,11 @@ import Foundation
 struct Product: Equatable, Identifiable {
     let id: Int
     let title: String
-    let price: Double // Update to Currency
+    var price: Double // Update to Currency
     let description: String
     let category: String // Update to enum
     let imageURL: URL
+    var hasDiscount: Bool = false // Track if the product has a discount
     
     // Add rating later...
 }
