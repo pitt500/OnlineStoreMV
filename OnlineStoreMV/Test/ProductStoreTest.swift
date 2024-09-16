@@ -16,7 +16,8 @@ struct ProductStoreTest {
     func fetchThreeProductsFromApiAndDatabase() async throws {
         let productStore = ProductStore(
             apiClient: .testSuccess,
-            databaseClient: .inMemory
+            databaseClient: .inMemory,
+            discountCalculator: .init(discountProvider: .demo)
         )
         
         try #require(MockedDatabase.shared.cachedProducts.isEmpty, "Cannot test fetching products from API when database is not empty")
@@ -49,7 +50,8 @@ struct ProductStoreTest {
     func testFetchThreeProductsFromAPIDeprecated() async throws {
         let productStore = ProductStore(
             apiClient: .testSuccess,
-            databaseClient: .inMemory
+            databaseClient: .inMemory,
+            discountCalculator: .init(discountProvider: .demo)
         )
         
         do {
@@ -75,7 +77,8 @@ final class ProductStoreTest_deprecated: XCTest {
     func testFetchThreeProductsFromAPI() async {
         let productStore = ProductStore(
             apiClient: .testSuccess,
-            databaseClient: .inMemory
+            databaseClient: .inMemory,
+            discountCalculator: .init(discountProvider: .demo)
         )
         await productStore.fetchProducts()
         
@@ -90,7 +93,8 @@ final class ProductStoreTest_deprecated: XCTest {
     func testFetchThreeProductsFromAPIDeprecated() {
         let productStore = ProductStore(
             apiClient: .testError,
-            databaseClient: .inMemory
+            databaseClient: .inMemory,
+            discountCalculator: .init(discountProvider: .demo)
         )
         
         let expectation = XCTestExpectation(description: "Fetch products")
