@@ -29,9 +29,22 @@ struct CartCell: View {
                     Text(cartItem.product.title)
                         .lineLimit(3)
                         .minimumScaleFactor(0.5)
-                    HStack {
-                        Text("$\(cartItem.product.price.description)")
-                            .font(.custom("AmericanTypewriter", size: 25))
+                    
+                    // Check if the product has a discount
+                    if cartItem.product.hasDiscount {
+                        // Show original price with strikethrough
+                        Text("$\(String(format: "%.2f", cartItem.product.price))")
+                            .font(.custom("AmericanTypewriter", size: 16))
+                            .strikethrough()
+                            .foregroundColor(.gray)
+                        
+                        // Show discounted price
+                        Text("$\(String(format: "%.2f", cartItem.product.discountedPrice))")
+                            .fontWeight(.bold)
+                            .foregroundColor(.red)
+                    } else {
+                        // Show normal price if no discount
+                        Text("$\(String(format: "%.2f", cartItem.product.price))")
                             .fontWeight(.bold)
                     }
                 }
