@@ -14,14 +14,17 @@ class ProductStore {
         
     private let apiClient: APIClient
     private let databaseClient: DatabaseClient
+    private let discountCalculator: DiscountCalculator
     
     init(
         apiClient: APIClient = .live,
-        databaseClient: DatabaseClient = .live
+        databaseClient: DatabaseClient = .live,
+        discountCalculator: DiscountCalculator
     ) {
         self.products = []
         self.apiClient = apiClient
         self.databaseClient = databaseClient
+        self.discountCalculator = discountCalculator
     }
     
     enum LoadingState {
@@ -39,18 +42,17 @@ class ProductStore {
         // Try fetching from the cache first
         let cachedProducts = databaseClient.fetchCachedProducts()
         guard cachedProducts.isEmpty else {
-            products = cachedProducts
-            loadingState = .loaded(result: cachedProducts)
+            let discountedProducts = discountCalculator.applyDiscount(to: cachedProducts)
+            products = discountedProducts
+            loadingState = .loaded(result: discountedProducts)
             return
         }
         
         do {
-            products = try await apiClient.fetchProducts()
-            loadingState = if products.isEmpty {
-                .empty
-            } else {
-                .loaded(result: products)
-            }
+            var fetchedProducts = try await apiClient.fetchProducts()
+            fetchedProducts = discountCalculator.applyDiscount(to: fetchedProducts)
+            products = fetchedProducts
+            loadingState = products.isEmpty ? .empty : .loaded(result: products)
             
             // Save fetched products to the database
             databaseClient.saveProducts(products)

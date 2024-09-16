@@ -85,7 +85,8 @@ struct ProductList: View {
         .environment(
             ProductStore(
                 apiClient: .testSuccess,
-                databaseClient: .inMemory
+                databaseClient: .inMemory,
+                discountCalculator: .init(discountProvider: .demo)
             )
         )
         .environment(CartStore())
@@ -97,7 +98,8 @@ struct ProductList: View {
         .environment(
             ProductStore(
                 apiClient: .testEmpty,
-                databaseClient: .inMemory
+                databaseClient: .inMemory,
+                discountCalculator: .init(discountProvider: .demo)
             )
         )
         .environment(CartStore())
@@ -108,7 +110,8 @@ struct ProductList: View {
         .environment(
             ProductStore(
                 apiClient: .testError,
-                databaseClient: .inMemory
+                databaseClient: .inMemory,
+                discountCalculator: .init(discountProvider: .demo)
             )
         )
         .environment(CartStore())

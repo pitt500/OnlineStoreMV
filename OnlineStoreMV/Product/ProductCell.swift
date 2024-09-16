@@ -28,9 +28,25 @@ struct ProductCell: View {
             VStack(alignment: .leading) {
                 Text(product.title)
                 HStack {
-                    Text("$\(product.price.description)")
-                        .font(.custom("AmericanTypewriter", size: 25))
-                        .fontWeight(.bold)
+                    if product.hasDiscount {
+                        VStack {
+                            // Show original price struck through
+                            Text("$\(String(format: "%.2f", product.price))")
+                                .font(.custom("AmericanTypewriter", size: 16))
+                                .strikethrough()
+                                .foregroundColor(.gray)
+                            
+                            // Show discounted price in bold
+                            Text("$\(String(format: "%.2f", product.discountedPrice))")
+                                .fontWeight(.bold)
+                                .foregroundColor(.red)
+                        }
+                    } else {
+                        // If no discount, show normal price
+                        Text("$\(String(format: "%.2f", product.price))")
+                            .fontWeight(.bold)
+                    }
+                    
                     Spacer()
                     AddToCartButton(product: product)
                 }

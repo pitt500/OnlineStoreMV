@@ -16,7 +16,8 @@ extension Product {
                 price: 20,
                 description: "This is a description of a cool T-shirt",
                 category: "SomeArticle",
-                imageURL: URL(string: "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg")!
+                imageURL: URL(string: "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg")!,
+                percentageDiscount: 0.1
             ),
             Product(
                 id: 2,
