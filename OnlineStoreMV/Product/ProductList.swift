@@ -82,20 +82,35 @@ struct ProductList: View {
 #if DEBUG
 #Preview("Happy Path") {
     ProductList()
-        .environment(ProductStore(apiClient: .testSuccess))
+        .environment(
+            ProductStore(
+                apiClient: .testSuccess,
+                databaseClient: .inMemory
+            )
+        )
         .environment(CartStore())
 }
 
 
 #Preview("Empty List") {
     ProductList()
-        .environment(ProductStore(apiClient: .testEmpty))
+        .environment(
+            ProductStore(
+                apiClient: .testEmpty,
+                databaseClient: .inMemory
+            )
+        )
         .environment(CartStore())
 }
 
 #Preview("Error from API") {
     ProductList()
-        .environment(ProductStore(apiClient: .testError))
+        .environment(
+            ProductStore(
+                apiClient: .testError,
+                databaseClient: .inMemory
+            )
+        )
         .environment(CartStore())
 }
 #endif

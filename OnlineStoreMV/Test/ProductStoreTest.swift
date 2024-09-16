@@ -13,8 +13,16 @@ import Testing
 struct ProductStoreTest {
     
     @Test
-    func fetchThreeProductsFromAPI() async {
-        let productStore = ProductStore(apiClient: .testSuccess)
+    func fetchThreeProductsFromApiAndDatabase() async throws {
+        let productStore = ProductStore(
+            apiClient: .testSuccess,
+            databaseClient: .inMemory
+        )
+        
+        try #require(MockedDatabase.shared.cachedProducts.isEmpty, "Cannot test fetching products from API when database is not empty")
+        try #require(productStore.products.isEmpty, "Cannot test fetching products from API when products are not empty")
+        
+        // Fetching products from API
         await productStore.fetchProducts()
         
         guard case .loaded(let products) = productStore.loadingState else {
@@ -23,11 +31,26 @@ struct ProductStoreTest {
         }
         
         #expect(products.count == 3)
+        #expect(MockedDatabase.shared.cachedProducts.count == 3)
+        
+        // Fetching products from Cache
+        await productStore.fetchProducts()
+        
+        guard case .loaded(let products) = productStore.loadingState else {
+            Issue.record("Expected .loaded state but got \(productStore.loadingState)")
+            return
+        }
+        
+        #expect(products.count == 3)
+        #expect(MockedDatabase.shared.cachedProducts.count == 3)
     }
     
     @Test
     func testFetchThreeProductsFromAPIDeprecated() async throws {
-        let productStore = ProductStore(apiClient: .testSuccess)
+        let productStore = ProductStore(
+            apiClient: .testSuccess,
+            databaseClient: .inMemory
+        )
         
         do {
             let products = try await withCheckedThrowingContinuation { continuation in
@@ -50,7 +73,10 @@ struct ProductStoreTest {
 
 final class ProductStoreTest_deprecated: XCTest {
     func testFetchThreeProductsFromAPI() async {
-        let productStore = ProductStore(apiClient: .testSuccess)
+        let productStore = ProductStore(
+            apiClient: .testSuccess,
+            databaseClient: .inMemory
+        )
         await productStore.fetchProducts()
         
         guard case .loaded(let products) = productStore.loadingState else {
@@ -62,7 +88,10 @@ final class ProductStoreTest_deprecated: XCTest {
     }
     
     func testFetchThreeProductsFromAPIDeprecated() {
-        let productStore = ProductStore(apiClient: .testError)
+        let productStore = ProductStore(
+            apiClient: .testError,
+            databaseClient: .inMemory
+        )
         
         let expectation = XCTestExpectation(description: "Fetch products")
         

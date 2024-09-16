@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B50DF7162C93258100DF0C4D /* DatabaseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50DF7152C93258100DF0C4D /* DatabaseClient.swift */; };
 		B50DFF3C2BE6A25800039CCE /* Product+Sample.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50DFF3B2BE6A25800039CCE /* Product+Sample.swift */; };
 		B50DFF3E2BE6A3CB00039CCE /* CartItem+Sample.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50DFF3D2BE6A3CB00039CCE /* CartItem+Sample.swift */; };
 		B51F118D2BE29AD20005C4DC /* ProductErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51F118C2BE29AD20005C4DC /* ProductErrorView.swift */; };
@@ -44,6 +45,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B50DF7152C93258100DF0C4D /* DatabaseClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseClient.swift; sourceTree = "<group>"; };
 		B50DFF3B2BE6A25800039CCE /* Product+Sample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Product+Sample.swift"; sourceTree = "<group>"; };
 		B50DFF3D2BE6A3CB00039CCE /* CartItem+Sample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CartItem+Sample.swift"; sourceTree = "<group>"; };
 		B51F118C2BE29AD20005C4DC /* ProductErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductErrorView.swift; sourceTree = "<group>"; };
@@ -91,6 +93,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B50DF7142C93255600DF0C4D /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				B50DF7152C93258100DF0C4D /* DatabaseClient.swift */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
 		B559E6742B96EDC1002218EB /* Product */ = {
 			isa = PBXGroup;
 			children = (
@@ -186,6 +196,7 @@
 		B58F25E62B96E58E000CAD57 /* OnlineStoreMV */ = {
 			isa = PBXGroup;
 			children = (
+				B50DF7142C93255600DF0C4D /* Database */,
 				B559E6A82B9AF872002218EB /* Test */,
 				B559E6A52B9A7B4A002218EB /* Root */,
 				B559E6A02B9A670B002218EB /* Profile */,
@@ -345,6 +356,7 @@
 				B559E6762B96EDD3002218EB /* Product.swift in Sources */,
 				B559E67D2B977B43002218EB /* PlusMinusButton.swift in Sources */,
 				B559E67A2B977A45002218EB /* AddToCartButton.swift in Sources */,
+				B50DF7162C93258100DF0C4D /* DatabaseClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

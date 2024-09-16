@@ -9,6 +9,21 @@ import Foundation
 
 @Observable
 class ProductStore {
+    var products: [Product]
+    var loadingState: LoadingState = .notStarted
+        
+    private let apiClient: APIClient
+    private let databaseClient: DatabaseClient
+    
+    init(
+        apiClient: APIClient = .live,
+        databaseClient: DatabaseClient = .live
+    ) {
+        self.products = []
+        self.apiClient = apiClient
+        self.databaseClient = databaseClient
+    }
+    
     enum LoadingState {
         case notStarted
         case loading
@@ -17,25 +32,28 @@ class ProductStore {
         case error(message: String)
     }
     
-    private var products: [Product]
-    private let apiClient: APIClient
-    var loadingState = LoadingState.notStarted
-    
-    init(apiClient: APIClient = .live) {
-        self.products = []
-        self.apiClient = apiClient
-    }
-    
     @MainActor
     func fetchProducts() async {
+        loadingState = .loading
+        
+        // Try fetching from the cache first
+        let cachedProducts = databaseClient.fetchCachedProducts()
+        guard cachedProducts.isEmpty else {
+            products = cachedProducts
+            loadingState = .loaded(result: cachedProducts)
+            return
+        }
+        
         do {
-            loadingState = .loading
             products = try await apiClient.fetchProducts()
             loadingState = if products.isEmpty {
                 .empty
             } else {
                 .loaded(result: products)
             }
+            
+            // Save fetched products to the database
+            databaseClient.saveProducts(products)
         } catch {
             loadingState = .error(message: error.localizedDescription)
         }
