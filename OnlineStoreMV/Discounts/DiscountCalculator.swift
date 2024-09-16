@@ -12,13 +12,13 @@ struct DiscountCalculator {
         var discountedProduct = product
         
         if let discountPercentage = discountProvider.getDiscount(for: product.id) {
+            // Validate that the discount percentage is between 0.0 and 1.0
             guard discountPercentage >= 0.0 && discountPercentage <= 1.0 else {
                 print("Error: Discount percentage for product \(product.id) is out of range")
                 return product
             }
             
-            discountedProduct.price = product.price * (1 - discountPercentage)
-            discountedProduct.hasDiscount = true
+            discountedProduct.percentageDiscount = discountPercentage
         }
         
         return discountedProduct

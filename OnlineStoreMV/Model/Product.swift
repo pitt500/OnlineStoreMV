@@ -14,7 +14,18 @@ struct Product: Equatable, Identifiable {
     let description: String
     let category: String // Update to enum
     let imageURL: URL
-    var hasDiscount: Bool = false // Track if the product has a discount
+    var percentageDiscount: Double? // Discount percentage (0.0 to 1.0), nil if no discount
+    
+    var hasDiscount: Bool {
+        return percentageDiscount != nil
+    }
+    
+    var discountedPrice: Double {
+        guard let discount = percentageDiscount else {
+            return price
+        }
+        return price * (1 - discount)
+    }
     
     // Add rating later...
 }
