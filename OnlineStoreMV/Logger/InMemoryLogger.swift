@@ -6,7 +6,7 @@
 //
 
 class InMemoryLogger: Logger {
-    private(set) var logs: [String] = []
+    private var logs: [String] = []
     
     func log(_ message: String) {
         logs.append(message)
@@ -14,5 +14,9 @@ class InMemoryLogger: Logger {
     
     func clear() {
         logs.removeAll()
+    }
+    
+    func getLoggedMessages() -> [String] {
+        logs
     }
 }
