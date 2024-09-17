@@ -10,13 +10,15 @@ class InMemoryStrategy: LoggingStrategy {
     
     func log(_ message: String) {
         logs.append(message)
+        print("[InMemoryStrategy]: \(message)")
     }
     
     func clear() {
         logs.removeAll()
+        print("[InMemoryStrategy] Cleared all log messages from memory.")
     }
     
-    func getLoggedMessages() -> [String] {
+    var loggedMessages: [String] {
         logs
     }
 }

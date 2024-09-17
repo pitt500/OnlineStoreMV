@@ -9,5 +9,5 @@
 protocol LoggingStrategy {
     func log(_ message: String)
     func clear()
-    func getLoggedMessages() -> [String]
+    var loggedMessages: [String] { get }
 }

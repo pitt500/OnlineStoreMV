@@ -66,7 +66,8 @@ struct CartStoreTest {
     func totalAmountString() throws {
         let cartStore = CartStore(
             cartItems: cartItems,
-            apiClient: .testSuccess
+            apiClient: .testSuccess,
+            logger: .inMemory
         )
         
         #expect(cartStore.totalPriceString == "$628.92")
@@ -79,7 +80,8 @@ struct CartStoreTest {
         func quantityFromItemInCart() {
             let cartStore = CartStore(
                 cartItems: cartItems,
-                apiClient: .testSuccess
+                apiClient: .testSuccess,
+                logger: .inMemory
             )
             
             cartStore.removeFromCart(product: products[0])
@@ -95,7 +97,8 @@ struct CartStoreTest {
         func quantityFromItemInCartUntilMakeItZero() {
             let cartStore = CartStore(
                 cartItems: cartItems,
-                apiClient: .testSuccess
+                apiClient: .testSuccess,
+                logger: .inMemory
             )
             
             cartStore.removeFromCart(product: products[0])
@@ -122,7 +125,8 @@ struct CartStoreTest {
         func oneProductFromCart(product: Product, expectedQuantity: Int) {
             let cartStore = CartStore(
                 cartItems: cartItems,
-                apiClient: .testSuccess
+                apiClient: .testSuccess,
+                logger: .inMemory
             )
             
             cartStore.removeAllFromCart(product: product)
@@ -138,7 +142,8 @@ struct CartStoreTest {
         func allItemsFromCart() {
             let cartStore = CartStore(
                 cartItems: cartItems,
-                apiClient: .testSuccess
+                apiClient: .testSuccess,
+                logger: .inMemory
             )
             
             cartStore.removeAllItems()
@@ -162,7 +167,8 @@ struct CartStoreTest {
             ]
             let cartStore = CartStore(
                 cartItems: cartItems,
-                apiClient: .testSuccess
+                apiClient: .testSuccess,
+                logger: .inMemory
             )
             
             let quantity = cartStore.quantity(for: products[0])
@@ -187,7 +193,8 @@ struct CartStoreTest {
             ]
             let cartStore = CartStore(
                 cartItems: cartItems,
-                apiClient: .testSuccess
+                apiClient: .testSuccess,
+                logger: .inMemory
             )
 
             let quantity = cartStore.quantity(for: unknownProduct)
@@ -202,7 +209,8 @@ struct CartStoreTest {
         func addQuantityFromExistingItem() {
             let cartStore = CartStore(
                 cartItems: cartItems,
-                apiClient: .testSuccess
+                apiClient: .testSuccess,
+                logger: .inMemory
             )
             
             cartStore.addToCart(product: products[0])
@@ -225,7 +233,8 @@ struct CartStoreTest {
             ]
             let cartStore = CartStore(
                 cartItems: cartItems,
-                apiClient: .testSuccess
+                apiClient: .testSuccess,
+                logger: .inMemory
             )
                         
             cartStore.addToCart(product: products[0])

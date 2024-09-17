@@ -86,10 +86,11 @@ struct ProductList: View {
             ProductStore(
                 apiClient: .testSuccess,
                 databaseClient: .inMemory,
-                discountCalculator: .init(discountProvider: .demo)
+                discountCalculator: .init(discountProvider: .demo),
+                logger: .inMemory
             )
         )
-        .environment(CartStore())
+        .environment(CartStore(logger: .inMemory))
 }
 
 
@@ -99,10 +100,11 @@ struct ProductList: View {
             ProductStore(
                 apiClient: .testEmpty,
                 databaseClient: .inMemory,
-                discountCalculator: .init(discountProvider: .demo)
+                discountCalculator: .init(discountProvider: .demo),
+                logger: .inMemory
             )
         )
-        .environment(CartStore())
+        .environment(CartStore(logger: .inMemory))
 }
 
 #Preview("Error from API") {
@@ -111,9 +113,10 @@ struct ProductList: View {
             ProductStore(
                 apiClient: .testError,
                 databaseClient: .inMemory,
-                discountCalculator: .init(discountProvider: .demo)
+                discountCalculator: .init(discountProvider: .demo),
+                logger: .inMemory
             )
         )
-        .environment(CartStore())
+        .environment(CartStore(logger: .inMemory))
 }
 #endif

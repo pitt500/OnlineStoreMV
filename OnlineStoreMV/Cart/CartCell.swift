@@ -85,6 +85,6 @@ struct CartCell: View {
             quantity: 2
         )
     )
-    .environment(CartStore())
+    .environment(CartStore(logger: .inMemory))
 }
 #endif

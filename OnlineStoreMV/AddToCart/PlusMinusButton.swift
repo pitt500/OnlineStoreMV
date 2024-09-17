@@ -44,7 +44,7 @@ struct PlusMinusButton: View {
 #if DEBUG
 #Preview {
     PlusMinusButton(product: Product.sample.first!)
-        .environment(CartStore())
+        .environment(CartStore(logger: .inMemory))
         
 }
 #endif

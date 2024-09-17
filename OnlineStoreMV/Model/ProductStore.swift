@@ -15,16 +15,19 @@ class ProductStore {
     private let apiClient: APIClient
     private let databaseClient: DatabaseClient
     private let discountCalculator: DiscountCalculator
+    private let logger: Logger
     
     init(
         apiClient: APIClient = .live,
         databaseClient: DatabaseClient = .live,
-        discountCalculator: DiscountCalculator
+        discountCalculator: DiscountCalculator,
+        logger: Logger
     ) {
         self.products = []
         self.apiClient = apiClient
         self.databaseClient = databaseClient
         self.discountCalculator = discountCalculator
+        self.logger = logger
     }
     
     enum LoadingState {
@@ -38,13 +41,15 @@ class ProductStore {
     @MainActor
     func fetchProducts() async {
         loadingState = .loading
+        logger.log("Started fetching products.")
         
         // Try fetching from the cache first
         let cachedProducts = databaseClient.fetchCachedProducts()
         guard cachedProducts.isEmpty else {
-            let discountedProducts = discountCalculator.applyDiscount(to: cachedProducts)
-            products = discountedProducts
-            loadingState = .loaded(result: discountedProducts)
+            //let discountedProducts = discountCalculator.applyDiscount(to: cachedProducts)
+            products = cachedProducts
+            loadingState = .loaded(result: cachedProducts)
+            logger.log("Fetched products from cache.")
             return
         }
         
@@ -56,8 +61,10 @@ class ProductStore {
             
             // Save fetched products to the database
             databaseClient.saveProducts(products)
+            logger.log("Fetched products from API and applied discounts.")
         } catch {
             loadingState = .error(message: error.localizedDescription)
+            logger.log("Error fetching products: \(error.localizedDescription).")
         }
     }
     

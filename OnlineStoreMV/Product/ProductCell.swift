@@ -60,6 +60,6 @@ struct ProductCell: View {
 #if DEBUG
 #Preview {
     ProductCell(product: Product.sample.first!)
-        .environment(CartStore())
+        .environment(CartStore(logger: .inMemory))
 }
 #endif

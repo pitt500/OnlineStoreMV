@@ -14,14 +14,18 @@ struct ProductStoreTest {
     
     @Test
     func fetchThreeProductsFromApiAndDatabase() async throws {
+        let logger = Logger.fileLogging(fileName: "productStore_test.log")
         let productStore = ProductStore(
             apiClient: .testSuccess,
-            databaseClient: .inMemory,
-            discountCalculator: .init(discountProvider: .demo)
+            databaseClient: .live,
+            discountCalculator: .init(discountProvider: .demo),
+            logger: logger
         )
         
+        logger.clear()
         try #require(MockedDatabase.shared.cachedProducts.isEmpty, "Cannot test fetching products from API when database is not empty")
         try #require(productStore.products.isEmpty, "Cannot test fetching products from API when products are not empty")
+        try #require(logger.loggedMessages.isEmpty, "Logger is not empty")
         
         // Fetching products from API
         await productStore.fetchProducts()
@@ -33,6 +37,10 @@ struct ProductStoreTest {
         
         #expect(products.count == 3)
         #expect(MockedDatabase.shared.cachedProducts.count == 3)
+        #expect(logger.loggedMessages.count == 2)
+        
+        let lastLoggedMessageFromAPI = try #require(logger.loggedMessages.last)
+        #expect(lastLoggedMessageFromAPI.contains("Fetched products from API and applied discounts."))
         
         // Fetching products from Cache
         await productStore.fetchProducts()
@@ -44,6 +52,13 @@ struct ProductStoreTest {
         
         #expect(products.count == 3)
         #expect(MockedDatabase.shared.cachedProducts.count == 3)
+        #expect(logger.loggedMessages.count == 4)
+        
+        let lastLoggedMessageFromCache = try #require(logger.loggedMessages.last)
+        #expect(lastLoggedMessageFromCache.contains("Fetched products from cache."))
+        
+        logger.clear()
+        #expect(logger.loggedMessages.isEmpty, "Logger is not empty")
     }
     
     @Test
@@ -51,7 +66,8 @@ struct ProductStoreTest {
         let productStore = ProductStore(
             apiClient: .testSuccess,
             databaseClient: .inMemory,
-            discountCalculator: .init(discountProvider: .demo)
+            discountCalculator: .init(discountProvider: .demo),
+            logger: .inMemory
         )
         
         do {
@@ -78,7 +94,8 @@ final class ProductStoreTest_deprecated: XCTest {
         let productStore = ProductStore(
             apiClient: .testSuccess,
             databaseClient: .inMemory,
-            discountCalculator: .init(discountProvider: .demo)
+            discountCalculator: .init(discountProvider: .demo),
+            logger: .inMemory
         )
         await productStore.fetchProducts()
         
@@ -94,7 +111,8 @@ final class ProductStoreTest_deprecated: XCTest {
         let productStore = ProductStore(
             apiClient: .testError,
             databaseClient: .inMemory,
-            discountCalculator: .init(discountProvider: .demo)
+            discountCalculator: .init(discountProvider: .demo),
+            logger: .inMemory
         )
         
         let expectation = XCTestExpectation(description: "Fetch products")

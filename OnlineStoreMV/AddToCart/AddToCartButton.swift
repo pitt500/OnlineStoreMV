@@ -32,6 +32,6 @@ struct AddToCartButton: View {
 #if DEBUG
 #Preview {
     AddToCartButton(product: Product.sample.first!)
-        .environment(CartStore())
+        .environment(CartStore(logger: .inMemory))
 }
 #endif

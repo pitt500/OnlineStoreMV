@@ -124,7 +124,8 @@ struct CartListView: View {
         .environment(
             CartStore(
                 cartItems: CartItem.sample,
-                apiClient: .testSuccess
+                apiClient: .testSuccess,
+                logger: .inMemory
             )
         )
 }

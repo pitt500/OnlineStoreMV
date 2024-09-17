@@ -25,13 +25,13 @@ class FileLoggingStrategy: LoggingStrategy {
             } else {
                 try data.write(to: fileURL)
             }
-            print("[FileLoggingStrategy] Logged message to file: \(message)")
+            print("[FileLoggingStrategy]: \(message)")
         } catch {
             print("Failed to log message to file: \(error.localizedDescription)")
         }
     }
     
-    func getLoggedMessages() -> [String] {
+    var loggedMessages: [String] {
         do {
             let data = try Data(contentsOf: fileURL)
             let content = String(data: data, encoding: .utf8)
