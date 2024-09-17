@@ -10,8 +10,10 @@
 		B50DF7162C93258100DF0C4D /* DatabaseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50DF7152C93258100DF0C4D /* DatabaseClient.swift */; };
 		B50DF7192C98634B00DF0C4D /* DiscountCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50DF7182C98634B00DF0C4D /* DiscountCalculator.swift */; };
 		B50DF71B2C98658100DF0C4D /* DiscountProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50DF71A2C98658100DF0C4D /* DiscountProvider.swift */; };
-		B50DF71E2C98E9BE00DF0C4D /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50DF71D2C98E9BE00DF0C4D /* Logger.swift */; };
-		B50DF7202C98EAD000DF0C4D /* InMemoryLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50DF71F2C98EACB00DF0C4D /* InMemoryLogger.swift */; };
+		B50DF71E2C98E9BE00DF0C4D /* LoggingStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50DF71D2C98E9BE00DF0C4D /* LoggingStrategy.swift */; };
+		B50DF7202C98EAD000DF0C4D /* InMemoryStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50DF71F2C98EACB00DF0C4D /* InMemoryStrategy.swift */; };
+		B50DF7222C98ED7F00DF0C4D /* FileLoggingStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50DF7212C98ED7F00DF0C4D /* FileLoggingStrategy.swift */; };
+		B50DF7242C98FF8000DF0C4D /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50DF7232C98FF8000DF0C4D /* Logger.swift */; };
 		B50DFF3C2BE6A25800039CCE /* Product+Sample.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50DFF3B2BE6A25800039CCE /* Product+Sample.swift */; };
 		B50DFF3E2BE6A3CB00039CCE /* CartItem+Sample.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50DFF3D2BE6A3CB00039CCE /* CartItem+Sample.swift */; };
 		B51F118D2BE29AD20005C4DC /* ProductErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51F118C2BE29AD20005C4DC /* ProductErrorView.swift */; };
@@ -52,8 +54,10 @@
 		B50DF7152C93258100DF0C4D /* DatabaseClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseClient.swift; sourceTree = "<group>"; };
 		B50DF7182C98634B00DF0C4D /* DiscountCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscountCalculator.swift; sourceTree = "<group>"; };
 		B50DF71A2C98658100DF0C4D /* DiscountProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscountProvider.swift; sourceTree = "<group>"; };
-		B50DF71D2C98E9BE00DF0C4D /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
-		B50DF71F2C98EACB00DF0C4D /* InMemoryLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InMemoryLogger.swift; sourceTree = "<group>"; };
+		B50DF71D2C98E9BE00DF0C4D /* LoggingStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggingStrategy.swift; sourceTree = "<group>"; };
+		B50DF71F2C98EACB00DF0C4D /* InMemoryStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InMemoryStrategy.swift; sourceTree = "<group>"; };
+		B50DF7212C98ED7F00DF0C4D /* FileLoggingStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileLoggingStrategy.swift; sourceTree = "<group>"; };
+		B50DF7232C98FF8000DF0C4D /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		B50DFF3B2BE6A25800039CCE /* Product+Sample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Product+Sample.swift"; sourceTree = "<group>"; };
 		B50DFF3D2BE6A3CB00039CCE /* CartItem+Sample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CartItem+Sample.swift"; sourceTree = "<group>"; };
 		B51F118C2BE29AD20005C4DC /* ProductErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductErrorView.swift; sourceTree = "<group>"; };
@@ -121,8 +125,10 @@
 		B50DF71C2C98E9B500DF0C4D /* Logger */ = {
 			isa = PBXGroup;
 			children = (
-				B50DF71F2C98EACB00DF0C4D /* InMemoryLogger.swift */,
-				B50DF71D2C98E9BE00DF0C4D /* Logger.swift */,
+				B50DF7232C98FF8000DF0C4D /* Logger.swift */,
+				B50DF7212C98ED7F00DF0C4D /* FileLoggingStrategy.swift */,
+				B50DF71F2C98EACB00DF0C4D /* InMemoryStrategy.swift */,
+				B50DF71D2C98E9BE00DF0C4D /* LoggingStrategy.swift */,
 			);
 			path = Logger;
 			sourceTree = "<group>";
@@ -366,13 +372,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				B559E6882B97A6EE002218EB /* ProductStore.swift in Sources */,
+				B50DF7242C98FF8000DF0C4D /* Logger.swift in Sources */,
 				B559E69D2B9995B8002218EB /* CartCell.swift in Sources */,
 				B559E69F2B9A66D7002218EB /* UserProfile.swift in Sources */,
 				B559E6A72B9A7B5F002218EB /* RootView.swift in Sources */,
 				B559E6782B96EDFC002218EB /* ProductCell.swift in Sources */,
 				B559E6A42B9A67B9002218EB /* AccountStore.swift in Sources */,
 				B559E68B2B982E6E002218EB /* APIClient.swift in Sources */,
-				B50DF7202C98EAD000DF0C4D /* InMemoryLogger.swift in Sources */,
+				B50DF7202C98EAD000DF0C4D /* InMemoryStrategy.swift in Sources */,
 				B559E6962B984D84002218EB /* ProductList.swift in Sources */,
 				B559E6A22B9A671B002218EB /* ProfileView.swift in Sources */,
 				B50DFF3E2BE6A3CB00039CCE /* CartItem+Sample.swift in Sources */,
@@ -380,8 +387,9 @@
 				B559E69B2B9994AD002218EB /* CartListView.swift in Sources */,
 				B50DF7192C98634B00DF0C4D /* DiscountCalculator.swift in Sources */,
 				B51F118D2BE29AD20005C4DC /* ProductErrorView.swift in Sources */,
+				B50DF7222C98ED7F00DF0C4D /* FileLoggingStrategy.swift in Sources */,
 				B559E6862B978624002218EB /* CartItem.swift in Sources */,
-				B50DF71E2C98E9BE00DF0C4D /* Logger.swift in Sources */,
+				B50DF71E2C98E9BE00DF0C4D /* LoggingStrategy.swift in Sources */,
 				B50DF71B2C98658100DF0C4D /* DiscountProvider.swift in Sources */,
 				B559E6842B97856E002218EB /* CartStore.swift in Sources */,
 				B58F25E82B96E58E000CAD57 /* OnlineStoreMVApp.swift in Sources */,
