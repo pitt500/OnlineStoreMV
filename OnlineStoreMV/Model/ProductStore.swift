@@ -46,7 +46,6 @@ class ProductStore {
         // Try fetching from the cache first
         let cachedProducts = databaseClient.fetchCachedProducts()
         guard cachedProducts.isEmpty else {
-            //let discountedProducts = discountCalculator.applyDiscount(to: cachedProducts)
             products = cachedProducts
             loadingState = .loaded(result: cachedProducts)
             logger.log("Fetched products from cache.")

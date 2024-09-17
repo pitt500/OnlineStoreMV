@@ -36,6 +36,10 @@ struct ProductStoreTest {
         }
         
         #expect(products.count == 3)
+        #expect(products[0].hasDiscount)
+        #expect(products[1].hasDiscount)
+        #expect(!products[2].hasDiscount)
+        
         #expect(MockedDatabase.shared.cachedProducts.count == 3)
         #expect(logger.loggedMessages.count == 2)
         
@@ -51,6 +55,10 @@ struct ProductStoreTest {
         }
         
         #expect(products.count == 3)
+        #expect(products[0].hasDiscount)
+        #expect(products[1].hasDiscount)
+        #expect(!products[2].hasDiscount)
+        
         #expect(MockedDatabase.shared.cachedProducts.count == 3)
         #expect(logger.loggedMessages.count == 4)
         
