@@ -14,6 +14,11 @@ class FileLoggingStrategy: LoggingStrategy {
         self.fileURL = fileURL
     }
     
+    init(fileName: String) {
+        self.fileURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+            .appendingPathComponent(fileName)
+    }
+    
     func log(_ message: String) {
         do {
             let data = (message + "\n").data(using: .utf8)!

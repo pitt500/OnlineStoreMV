@@ -10,7 +10,7 @@ import SwiftUI
 struct RootView: View {
     @State private var cartStore = CartStore(logger: .fileLogging())
     @State private var productStore = ProductStore(
-        discountCalculator: .init(discountProvider: .demo),
+        discountCalculator: .init(discountProvider: .live),
         logger: .fileLogging()
     )
     @State private var accountStore = AccountStore()

@@ -19,6 +19,7 @@ struct DiscountProvider {
 }
 
 extension DiscountProvider {
-    static let demo = DiscountProvider(discounts: [1: 0.1, 2: 0.2])
+    // Missing live implementation. This is temporary.
+    static let live = DiscountProvider(discounts: [1: 0.1, 2: 0.2])
     static let empty = DiscountProvider(discounts: [:])
 }

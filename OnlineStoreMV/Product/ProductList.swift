@@ -86,7 +86,7 @@ struct ProductList: View {
             ProductStore(
                 apiClient: .testSuccess,
                 databaseClient: .inMemory,
-                discountCalculator: .init(discountProvider: .demo),
+                discountCalculator: .init(discountProvider: .live),
                 logger: .inMemory
             )
         )
@@ -100,7 +100,7 @@ struct ProductList: View {
             ProductStore(
                 apiClient: .testEmpty,
                 databaseClient: .inMemory,
-                discountCalculator: .init(discountProvider: .demo),
+                discountCalculator: .init(discountProvider: .live),
                 logger: .inMemory
             )
         )
@@ -113,7 +113,7 @@ struct ProductList: View {
             ProductStore(
                 apiClient: .testError,
                 databaseClient: .inMemory,
-                discountCalculator: .init(discountProvider: .demo),
+                discountCalculator: .init(discountProvider: .live),
                 logger: .inMemory
             )
         )

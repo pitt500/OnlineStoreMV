@@ -8,6 +8,7 @@
 struct DatabaseClient {
     var saveProducts: ([Product]) -> Void
     var fetchCachedProducts: () -> [Product]
+    var clear: () -> Void
 }
 
 extension DatabaseClient {
@@ -17,6 +18,9 @@ extension DatabaseClient {
         },
         fetchCachedProducts: {
             MockedDatabase.shared.cachedProducts
+        },
+        clear: {
+            MockedDatabase.shared.cachedProducts.removeAll()
         }
     )
     
