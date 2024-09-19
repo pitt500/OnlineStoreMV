@@ -32,9 +32,21 @@ struct ProductStoreTest {
     
     @Suite
     struct IntegrationTests {
+        func createTempFileURLForTest(
+            named testName: String = #function
+        ) -> URL {
+            let tempDirectory = FileManager.default.temporaryDirectory
+            let fileURL = tempDirectory.appendingPathComponent(testName)
+            
+            //Ensuring the previous temp file is deleted.
+            try? FileManager.default.removeItem(atPath: fileURL.path)
+            
+            return fileURL
+        }
+        
         @Test
         func fetchThreeProductsFromCache() async throws {
-            let logger = Logger.fileLogging(fileName: "productStore_cache.log")
+            let logger = Logger.fileLogging(fileURL: createTempFileURLForTest())
             let database = DatabaseClient.inMemory
             let productStore = ProductStore(
                 apiClient: .testSuccess,

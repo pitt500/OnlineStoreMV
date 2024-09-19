@@ -40,6 +40,10 @@ extension Logger {
     static func fileLogging(fileName: String = "onlineStoreApp.log") -> Logger {
         let fileURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
             .appendingPathComponent(fileName)
+        return fileLogging(fileURL: fileURL)
+    }
+    
+    static func fileLogging(fileURL: URL) -> Logger {
         return Logger(strategy: FileLoggingStrategy(fileURL: fileURL))
     }
 }
