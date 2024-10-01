@@ -34,6 +34,7 @@
 		B559E6A42B9A67B9002218EB /* AccountStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B559E6A32B9A67B9002218EB /* AccountStore.swift */; };
 		B559E6A72B9A7B5F002218EB /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B559E6A62B9A7B5F002218EB /* RootView.swift */; };
 		B559E6B92B9AF8C3002218EB /* CartStoreTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B559E6B82B9AF8C3002218EB /* CartStoreTest.swift */; };
+		B5660BD12CAC514F00380A27 /* OnlineStoreMV_UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5660BCF2CAC514F00380A27 /* OnlineStoreMV_UITests.swift */; };
 		B57B56B62C66E1FF00D90D0F /* ProductStoreTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57B56B52C66E1FF00D90D0F /* ProductStoreTest.swift */; };
 		B58F25E82B96E58E000CAD57 /* OnlineStoreMVApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58F25E72B96E58E000CAD57 /* OnlineStoreMVApp.swift */; };
 		B58F25EC2B96E58F000CAD57 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B58F25EB2B96E58F000CAD57 /* Assets.xcassets */; };
@@ -42,6 +43,13 @@
 
 /* Begin PBXContainerItemProxy section */
 		B559E6B12B9AF88D002218EB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B58F25DC2B96E58E000CAD57 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B58F25E32B96E58E000CAD57;
+			remoteInfo = OnlineStoreMV;
+		};
+		B5660BC72CAC50C200380A27 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B58F25DC2B96E58E000CAD57 /* Project object */;
 			proxyType = 1;
@@ -78,6 +86,8 @@
 		B559E6A62B9A7B5F002218EB /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		B559E6AD2B9AF88D002218EB /* OnlineStoreMVTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OnlineStoreMVTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B559E6B82B9AF8C3002218EB /* CartStoreTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartStoreTest.swift; sourceTree = "<group>"; };
+		B5660BC12CAC50C200380A27 /* OnlineStoreMVUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OnlineStoreMVUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B5660BCF2CAC514F00380A27 /* OnlineStoreMV_UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlineStoreMV_UITests.swift; sourceTree = "<group>"; };
 		B57B56B52C66E1FF00D90D0F /* ProductStoreTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductStoreTest.swift; sourceTree = "<group>"; };
 		B58F25E42B96E58E000CAD57 /* OnlineStoreMV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnlineStoreMV.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B58F25E72B96E58E000CAD57 /* OnlineStoreMVApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlineStoreMVApp.swift; sourceTree = "<group>"; };
@@ -92,6 +102,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				B53800D52C1C88DE001C5AB8 /* Testing in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B5660BBE2CAC50C200380A27 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -202,10 +219,19 @@
 		B559E6A82B9AF872002218EB /* Test */ = {
 			isa = PBXGroup;
 			children = (
+				B5660BCC2CAC50D700380A27 /* UI */,
 				B559E6B82B9AF8C3002218EB /* CartStoreTest.swift */,
 				B57B56B52C66E1FF00D90D0F /* ProductStoreTest.swift */,
 			);
 			path = Test;
+			sourceTree = "<group>";
+		};
+		B5660BCC2CAC50D700380A27 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				B5660BCF2CAC514F00380A27 /* OnlineStoreMV_UITests.swift */,
+			);
+			path = UI;
 			sourceTree = "<group>";
 		};
 		B58F25DB2B96E58E000CAD57 = {
@@ -221,6 +247,7 @@
 			children = (
 				B58F25E42B96E58E000CAD57 /* OnlineStoreMV.app */,
 				B559E6AD2B9AF88D002218EB /* OnlineStoreMVTests.xctest */,
+				B5660BC12CAC50C200380A27 /* OnlineStoreMVUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -280,6 +307,26 @@
 			productReference = B559E6AD2B9AF88D002218EB /* OnlineStoreMVTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		B5660BC02CAC50C200380A27 /* OnlineStoreMVUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B5660BCB2CAC50C200380A27 /* Build configuration list for PBXNativeTarget "OnlineStoreMVUITests" */;
+			buildPhases = (
+				B5660BBD2CAC50C200380A27 /* Sources */,
+				B5660BBE2CAC50C200380A27 /* Frameworks */,
+				B5660BBF2CAC50C200380A27 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B5660BC82CAC50C200380A27 /* PBXTargetDependency */,
+			);
+			name = OnlineStoreMVUITests;
+			packageProductDependencies = (
+			);
+			productName = OnlineStoreMVUITests;
+			productReference = B5660BC12CAC50C200380A27 /* OnlineStoreMVUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		B58F25E32B96E58E000CAD57 /* OnlineStoreMV */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = B58F25F32B96E58F000CAD57 /* Build configuration list for PBXNativeTarget "OnlineStoreMV" */;
@@ -304,11 +351,16 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1510;
+				LastSwiftUpdateCheck = 1600;
 				LastUpgradeCheck = 1510;
 				TargetAttributes = {
 					B559E6AC2B9AF88D002218EB = {
 						CreatedOnToolsVersion = 15.1;
+						TestTargetID = B58F25E32B96E58E000CAD57;
+					};
+					B5660BC02CAC50C200380A27 = {
+						CreatedOnToolsVersion = 16.0;
+						LastSwiftMigration = 1600;
 						TestTargetID = B58F25E32B96E58E000CAD57;
 					};
 					B58F25E32B96E58E000CAD57 = {
@@ -334,12 +386,20 @@
 			targets = (
 				B58F25E32B96E58E000CAD57 /* OnlineStoreMV */,
 				B559E6AC2B9AF88D002218EB /* OnlineStoreMVTests */,
+				B5660BC02CAC50C200380A27 /* OnlineStoreMVUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		B559E6AB2B9AF88D002218EB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B5660BBF2CAC50C200380A27 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -364,6 +424,14 @@
 			files = (
 				B559E6B92B9AF8C3002218EB /* CartStoreTest.swift in Sources */,
 				B57B56B62C66E1FF00D90D0F /* ProductStoreTest.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B5660BBD2CAC50C200380A27 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B5660BD12CAC514F00380A27 /* OnlineStoreMV_UITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -408,6 +476,11 @@
 			target = B58F25E32B96E58E000CAD57 /* OnlineStoreMV */;
 			targetProxy = B559E6B12B9AF88D002218EB /* PBXContainerItemProxy */;
 		};
+		B5660BC82CAC50C200380A27 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B58F25E32B96E58E000CAD57 /* OnlineStoreMV */;
+			targetProxy = B5660BC72CAC50C200380A27 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
@@ -448,6 +521,48 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OnlineStoreMV.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/OnlineStoreMV";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B5660BC92CAC50C200380A27 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = LHJA6J73E9;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.swiftandtips.OnlineStoreMVUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = OnlineStoreMV;
+			};
+			name = Debug;
+		};
+		B5660BCA2CAC50C200380A27 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = LHJA6J73E9;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.swiftandtips.OnlineStoreMVUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = OnlineStoreMV;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -650,6 +765,15 @@
 			buildConfigurations = (
 				B559E6B42B9AF88D002218EB /* Debug */,
 				B559E6B52B9AF88D002218EB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B5660BCB2CAC50C200380A27 /* Build configuration list for PBXNativeTarget "OnlineStoreMVUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B5660BC92CAC50C200380A27 /* Debug */,
+				B5660BCA2CAC50C200380A27 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

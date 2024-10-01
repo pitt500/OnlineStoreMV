@@ -41,6 +41,17 @@
                ReferencedContainer = "container:OnlineStoreMV.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "B5660BC02CAC50C200380A27"
+               BuildableName = "OnlineStoreMVUITests.xctest"
+               BlueprintName = "OnlineStoreMVUITests"
+               ReferencedContainer = "container:OnlineStoreMV.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
