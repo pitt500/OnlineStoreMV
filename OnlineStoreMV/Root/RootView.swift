@@ -8,8 +8,12 @@
 import SwiftUI
 
 struct RootView: View {
-    @State private var cartStore = CartStore(logger: .fileLogging())
+    @State private var cartStore = CartStore(
+        apiClient: apiClient(),
+        logger: .fileLogging()
+    )
     @State private var productStore = ProductStore(
+        apiClient: apiClient(),
         discountCalculator: .init(discountProvider: .live),
         logger: .fileLogging()
     )
@@ -36,4 +40,14 @@ struct RootView: View {
 
 #Preview {
     RootView()
+}
+
+extension RootView {
+    private static var isUITestRunning: Bool {
+        ProcessInfo.processInfo.environment["UI_Testing_Enabled"] == "YES"
+    }
+    
+    private static func apiClient() -> APIClient {
+        isUITestRunning ? .uiTestSuccess : .live
+    }
 }

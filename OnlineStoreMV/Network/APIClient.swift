@@ -50,7 +50,7 @@ extension APIClient {
 #if DEBUG
     static let testSuccess = Self(
         fetchProducts: {
-            try await Task.sleep(nanoseconds: 1000)
+            try await Task.sleep(nanoseconds: 3_000_000_000)
             return Product.sample
         },
         sendOrder: { cartItems in
@@ -61,7 +61,6 @@ extension APIClient {
             return UserProfile(id: 100, email: "test@test.com", firstName: "Test", lastName: "Lopez")
         }
     )
-    
     static let testEmpty = Self(
         fetchProducts: {
             try await Task.sleep(nanoseconds: 1000)
@@ -75,7 +74,6 @@ extension APIClient {
             return UserProfile(id: 100, email: "test@test.com", firstName: "Test", lastName: "Lopez")
         }
     )
-    
     static let testError = Self(
         fetchProducts: {
             try await Task.sleep(nanoseconds: 1000)
@@ -86,6 +84,21 @@ extension APIClient {
         },
         fetchUserProfile: {
             try await Task.sleep(nanoseconds: 1000)
+            return UserProfile(id: 100, email: "test@test.com", firstName: "Test", lastName: "Lopez")
+        }
+    )
+    
+    static let uiTestSuccess = Self(
+        fetchProducts: {
+            try await Task.sleep(nanoseconds: 3_000_000_000)
+            return Product.uiTestSample
+        },
+        sendOrder: { cartItems in
+            try await Task.sleep(nanoseconds: 3_000_000_000)
+            return "OK"
+        },
+        fetchUserProfile: {
+            try await Task.sleep(nanoseconds: 3_000_000_000)
             return UserProfile(id: 100, email: "test@test.com", firstName: "Test", lastName: "Lopez")
         }
     )
