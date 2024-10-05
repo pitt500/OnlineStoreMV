@@ -18,7 +18,8 @@ struct ProductList: View {
                 switch productStore.loadingState {
                 case .loading, .notStarted:
                     ProgressView()
-                        .frame(width: 100, height: 100)
+                        .frame(width: 300, height: 300)
+                        .accessibilityIdentifier("progressViewProductList")
                         .task {
                             await productStore.fetchProducts()
                         }
@@ -56,6 +57,7 @@ struct ProductList: View {
                         )
                         .environment(cartStore)
                     }
+                    .accessibilityIdentifier("productList")
                     .refreshable {
                         await productStore.fetchProducts()
                     }
@@ -69,6 +71,7 @@ struct ProductList: View {
                     } label: {
                         Text("Go to Cart")
                     }
+                    .accessibilityIdentifier("goToCartButton")
                 }
             }
             .sheet(isPresented: $shouldOpenCart) {

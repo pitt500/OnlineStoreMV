@@ -25,6 +25,7 @@ struct PlusMinusButton: View {
             .buttonStyle(.plain)
             
             Text(cartStore.quantity(for: product).description)
+                .accessibilityIdentifier("productQuantity")
                 .padding(5)
             
             Button {

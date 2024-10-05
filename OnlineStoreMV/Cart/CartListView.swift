@@ -31,6 +31,7 @@ struct CartListView: View {
                         List(cartStore.cartItems) { item in
                             CartCell(cartItem: item)
                         }
+                        .accessibilityIdentifier("cartList")
                         .safeAreaInset(edge: .bottom) {
                             Button {
                                 showConfirmationAlert = true
@@ -45,6 +46,7 @@ struct CartListView: View {
                                 }
                                 
                             }
+                            .accessibilityIdentifier("payButton")
                             .frame(maxWidth: .infinity, minHeight: 60)
                             .background(
                                 isPayButtonDisable
@@ -113,6 +115,7 @@ struct CartListView: View {
                 Color.black.opacity(0.2)
                     .ignoresSafeArea()
                 ProgressView()
+                    .accessibilityIdentifier("progressViewPayment")
             }
         }
     }
