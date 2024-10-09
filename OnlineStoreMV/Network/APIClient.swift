@@ -102,6 +102,21 @@ extension APIClient {
             return UserProfile(id: 100, email: "test@test.com", firstName: "Test", lastName: "Lopez")
         }
     )
+    
+    static let uiTestFailure = Self(
+        fetchProducts: {
+            try await Task.sleep(nanoseconds: 3_000_000_000)
+            throw Failure()
+        },
+        sendOrder: { cartItems in
+            try await Task.sleep(nanoseconds: 3_000_000_000)
+            throw Failure()
+        },
+        fetchUserProfile: {
+            try await Task.sleep(nanoseconds: 3_000_000_000)
+            throw Failure()
+        }
+    )
 #endif
 }
 

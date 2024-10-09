@@ -48,6 +48,26 @@ extension RootView {
     }
     
     private static func apiClient() -> APIClient {
-        isUITestRunning ? .uiTestSuccess : .live
+        guard isUITestRunning else { return .testError }
+        
+        enum UITestMode {
+            case success
+            case failure
+        }
+        
+        func uiTestMode() -> UITestMode {
+            if ProcessInfo.processInfo.environment["Test_Mode"] == "FAILURE" {
+                .failure
+            } else {
+                .success
+            }
+        }
+        
+        switch uiTestMode() {
+        case .success:
+            return .uiTestSuccess
+        case .failure:
+            return .uiTestFailure
+        }
     }
 }

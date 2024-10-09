@@ -10,17 +10,23 @@ import XCTest
 final class OnlineStoreMV_UITests: XCTestCase {
 
     var app: XCUIApplication!
+    private var _TestMode = "Test_Mode"
+    private var _Success = "SUCCESS"
+    private var _Failure = "FAILURE"
+    
 
     override func setUp() {
         super.setUp()
         continueAfterFailure = false
         app = XCUIApplication()
         app.launchEnvironment["UI_Testing_Enabled"] = "YES"
-        app.launch()
     }
     
     @MainActor
     func testLoadProductsScreenComponents() {
+        app.launchEnvironment[_TestMode] = _Success
+        app.launch()
+        
         let navTitle = app.staticTexts["Products"]
         XCTAssertTrue(navTitle.exists, "Products title not found")
         
@@ -36,6 +42,9 @@ final class OnlineStoreMV_UITests: XCTestCase {
     
     @MainActor
     func testSendingTwoProductsToCart() {
+        app.launchEnvironment[_TestMode] = _Success
+        app.launch()
+        
         let productList = app.collectionViews["productList"]
         XCTAssertTrue(productList.waitForExistence(timeout: 3), "The product list should appear after loading finishes.")
         
@@ -63,6 +72,9 @@ final class OnlineStoreMV_UITests: XCTestCase {
     
     @MainActor
     func testPayOrder() {
+        app.launchEnvironment[_TestMode] = _Success
+        app.launch()
+        
         let productList = app.collectionViews["productList"]
         XCTAssertTrue(productList.waitForExistence(timeout: 3), "The product list should appear after loading finishes.")
         
@@ -109,6 +121,18 @@ final class OnlineStoreMV_UITests: XCTestCase {
             .buttons["Done"].tap()
         
         XCTAssertTrue(productList.waitForExistence(timeout: 3), "The product list should appear after paying.")
+    }
+    
+    @MainActor
+    func testApiClientError() {
+        app.launchEnvironment[_TestMode] = _Failure
+        app.launch()
+        
+        let progressView = app.activityIndicators["progressViewProductList"]
+        XCTAssertTrue(progressView.waitForExistence(timeout: 5), "The ProgressView should appear while loading.")
+        
+        let errorImage = app.images["errorCloud"]
+        XCTAssertTrue(errorImage.waitForExistence(timeout: 5), "The error image should appear after loading.")
     }
 
 //    func testLaunchPerformance() throws {
