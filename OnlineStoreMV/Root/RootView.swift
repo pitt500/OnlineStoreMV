@@ -48,7 +48,7 @@ extension RootView {
     }
     
     private static func apiClient() -> APIClient {
-        guard isUITestRunning else { return .testError }
+        guard isUITestRunning else { return .live }
         
         enum UITestMode {
             case success
